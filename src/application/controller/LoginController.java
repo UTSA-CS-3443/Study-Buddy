@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package application.controller;
 
 import javafx.fxml.FXML;
@@ -17,3 +18,10 @@ public class LoginController {
     	
     }
 }
+=======
+package application.controller;
+
+public class LoginController {
+
+}
+>>>>>>> branch 'main' of https://github.com/UTSA-CS-3443/Team5Application-Section001.git
