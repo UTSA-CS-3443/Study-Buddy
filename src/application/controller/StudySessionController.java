@@ -1,6 +1,5 @@
 package application.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,6 +33,12 @@ public class StudySessionController {
     private TextArea descriptionTextArea;
 
     @FXML
+    private Button editSessionButton1;
+
+    @FXML
+    private Button leaveSessionButton;
+
+    @FXML
     void backButtonPressed(ActionEvent event) {
 
     }
@@ -43,4 +48,15 @@ public class StudySessionController {
 
     }
 
+    @FXML
+    void joinSessionButtonPress(ActionEvent event) {
+
+    }
+
+    @FXML
+    void leaveSessionButtonPress(ActionEvent event) {
+
+    }
+
 }
+
