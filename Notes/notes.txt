@@ -1,5 +1,7 @@
 Screen sizes
-800x600
+800x600 - Study Session, Create Session
+800x500 - login screen
+
 
 Logo background color code #353535
 Logo leaf color #ffe284
