@@ -1,2 +1,5 @@
 Screen sizes
-800x700
+800x600
+
+Logo background color code #353535
+Logo leaf color #ffe284
