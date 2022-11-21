@@ -9,9 +9,10 @@ import java.util.Scanner;
 import javafx.collections.ObservableList;
 
 public class StudySession {
-	public static ObservableList<String> Locations;
+	public static ObservableList<String> locations;
 	public static ObservableList<StudySession> allSessions;
-	private static final String dataFilePath = "./data/SessionData.csv";
+	private static final String sessionFilePath = "./data/SessionData.csv";
+	private static final String locationsFilePath = ".data/locationData.csv";
 	
 	private String name;  //Serves as unique identifier
 	private User owner;
@@ -22,9 +23,7 @@ public class StudySession {
 	private String description;
 	private ObservableList<User> sessionMembers;
 
-	public void updateRecords() {
-		//updates CSV file by re-writing all the session in the all sessions list to the .csv file.
-	}
+	
 	
 	public StudySession(String name, User creator, String subject, int classNumber,
 			String location, String locationDetail) {
@@ -55,12 +54,13 @@ public class StudySession {
 		updateRecords();
 	}
 	
+	//TODO: add check to see if sessions are already loaded
 	public static ObservableList<StudySession> loadSessions() {
 		//Code to load sessions in from .csv file in records
 		// checks to see if .csv file is not there, creates it if it does not exist
 		try {
 		
-			File dataFile = new File(dataFilePath);
+			File dataFile = new File(sessionFilePath);
 			dataFile.createNewFile();  // Creates new file if and only if file does not exist
 			Scanner s = new Scanner(dataFile);
 			
@@ -80,6 +80,8 @@ public class StudySession {
 				
 				allSessions.add(currRecord);
 			}
+			
+			s.close();
 		}
 		catch (Exception e) {
 			 e.printStackTrace();
@@ -88,20 +90,38 @@ public class StudySession {
 		return allSessions;
 	}
 	
+	//TODO: implement me!!
+	public void updateRecords() {
+		//updates CSV file by re-writing all the session in the all sessions list to the .csv file.
+	}
+	
 	public void sortSessionList() {
 		Comparator<StudySession> comparator = Comparator.comparing(StudySession::getName);
 		allSessions.sort(comparator);
 	}
 	
+	//TODO: add check to see if locations are already loaded
 	public void loadLocations() {
+		try {
+			File locationFile = new File(locationsFilePath);
+			Scanner s = new Scanner(locationFile);
+			
+			while (s.hasNext()) {
+				String record = s.next().trim();
+				locations.add(record);
+			}
+			
+			s.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
 	public void addSessionMember(User member) {
 		sessionMembers.add(member);
 	}
-	
-	
 	
 	//Setters and Getters
 	public String getName() {
