@@ -14,7 +14,6 @@ public class StudySession {
 	public static ObservableList<StudySession> allSessions;
 	private static final String dataFilePath = "./data/SessionData.csv";
 	
-	
 	private String name;  //Serves as unique identifier
 	private User owner;
 	private String subject;
@@ -38,6 +37,13 @@ public class StudySession {
 		
 		loadLocations();  //Confirms that locations have been loaded
 		
+		//Validates name of session, throw exception if invalid
+		for (StudySession e : allSessions) {
+			if (e.getName().compareTo(name) == 0) {
+				throw new IllegalArgumentException("Name already in use");
+			}
+		}
+		
 		this.name = name;
 		this.subject = subject;
 		this.classNumber = classNumber;
@@ -55,28 +61,32 @@ public class StudySession {
 		// checks to see if .csv file is not there, creates it if it does not exist
 		try {
 		
-		File dataFile = new File(dataFilePath);
-		dataFile.createNewFile();  // Creates new file if and only if file does not exist
-		Scanner s = new Scanner(dataFile);
-		
-		while (s.hasNext()) {
-			//name,ownerUsername,subject,classNumber,location,locationDetail,description,sessionMember1,sessionMember2,sessionMember3, . . . ,sessionMember(n)
+			File dataFile = new File(dataFilePath);
+			dataFile.createNewFile();  // Creates new file if and only if file does not exist
+			Scanner s = new Scanner(dataFile);
 			
-			String records[] = s.next().trim().split(",");
-			
-			StudySession currRecord = new StudySession(records[0], User.loadUser(records[1]), records[2], Integer.parseInt(records[3]), records[4], records[5]); 
-			
-		}
-		
-		
-		
+			while (s.hasNext()) {
+				//name,ownerUsername,subject,classNumber,location,locationDetail,description,sessionMember1,sessionMember2,sessionMember3, . . . ,sessionMember(n)
+				
+				String records[] = s.next().trim().split(",");
+				
+				//Do i need a specific catch for this????
+				StudySession currRecord = new StudySession(records[0], User.loadUser(records[1]), records[2], Integer.parseInt(records[3]), records[4], records[5]); 
+				currRecord.setDescription(records[6]);
+				if (records.length > 6 ) {
+					for (int i = 7; i > (records.length - 1); i++) {
+						currRecord.addSessionMember(User.loadUser(records[i]));
+					}
+				}
+				
+				allSessions.add(currRecord);
+			}
 		}
 		catch (Exception e) {
 			 e.printStackTrace();
 		}
 		
-		
-		return null;
+		return allSessions;
 	}
 	
 	public void sortSessionList() {
@@ -88,12 +98,13 @@ public class StudySession {
 		
 	}
 	
-	public void addSessionMember() {
-		
+	public void addSessionMember(User member) {
+		sessionMembers.add(member);
 	}
 	
 	
-
+	
+	//Setters and Getters
 	public String getName() {
 		return name;
 	}
