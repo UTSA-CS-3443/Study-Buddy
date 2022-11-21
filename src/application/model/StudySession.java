@@ -12,7 +12,7 @@ public class StudySession {
 	public static ObservableList<String> locations;
 	public static ObservableList<StudySession> allSessions;
 	private static final String sessionFilePath = "./data/SessionData.csv";
-	private static final String locationsFilePath = ".data/locationData.csv";
+	private static final String locationsFilePath = ".data/LocationData.csv";
 	
 	private String name;  //Serves as unique identifier
 	private User owner;

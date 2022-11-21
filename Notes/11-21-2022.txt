@@ -12,8 +12,8 @@ other notes:
 Todo:
 StudySession Model - Ryan P
 User Model - Ian A
-login Controller - Ryan P
+login Controller - Ian A
 createNewUserController - Ryan S
 marketPlaceController - Ryan S
 StudySessionController - Ryan P
-CreateNewSessionController - Ian A
+CreateNewSessionController - Ryan P
