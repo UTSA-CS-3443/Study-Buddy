@@ -47,4 +47,70 @@ public class StudySession {
 		allSessions.add(this);
 		updateRecords();
 	}
+	
+	public void addSessionMember() {
+		
+	}
+	
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public int getClassNumber() {
+		return classNumber;
+	}
+
+	public void setClassNumber(int classNumber) {
+		this.classNumber = classNumber;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getLocationDetail() {
+		return locationDetail;
+	}
+
+	public void setLocationDetail(String locationDetail) {
+		this.locationDetail = locationDetail;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public ObservableList<User> getSessionMembers() {
+		return sessionMembers;
+	}
 }
