@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 public class MarketPlaceController{
@@ -25,6 +26,20 @@ public class MarketPlaceController{
 
     @FXML
     private Label userNameLabel;
+    @FXML 
+    public void handleMouseClick(MouseEvent arg0) {
+    	//if the session is selected, then display a button to go to studysessionview.
+        System.out.println("clicked on " + studySessionsListView.getSelectionModel().getSelectedItem().getName());
+        selectButton.setVisible(true);
+        
+    }
+    @FXML
+    private Button selectButton;
+
+    @FXML
+    void selectButtonPressed(ActionEvent event) {
+    	//go to studysessionview.
+    }
 
     @FXML
     void searchButtonClicked(ActionEvent event) {
@@ -32,6 +47,7 @@ public class MarketPlaceController{
     }
     
     void initialize() {
+    	
     	//ObservableList<StudySession> sessions = StudySession.loadSessions();
     	//sort the sessions//if not already sorted.
     	studySessionsListView.setItems(StudySession.allSessions);
@@ -41,8 +57,6 @@ public class MarketPlaceController{
     	        return new ListViewCellController();
     	    }
     	});
-    	
-    	//if the session is selected, then display a button
     }
 
 }
