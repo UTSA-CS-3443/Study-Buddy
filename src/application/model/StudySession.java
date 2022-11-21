@@ -3,6 +3,7 @@ package application.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import javafx.collections.ObservableList;
@@ -88,7 +89,8 @@ public class StudySession {
 	}
 	
 	public void sortSessionList() {
-		
+		Comparator<StudySession> comparator = Comparator.comparing(StudySession::getName);
+		allSessions.sort(comparator);
 	}
 	
 	public void loadLocations() {
