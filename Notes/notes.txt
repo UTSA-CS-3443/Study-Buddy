@@ -11,5 +11,5 @@ Session CSV format
 name,ownerUsername,subject,classNumber,location,locationDetail,description,sessionMember1,sessionMember2,sessionMember3, . . . ,sessionMember(n)
  - there shall be no spaces after the commas since the description can contain commas within it. 
  
-Locations CSV
+Locations CSV format
 one location per line

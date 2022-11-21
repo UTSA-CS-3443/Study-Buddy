@@ -1,0 +1,19 @@
+some stuff about the user model: (stuff the StudySession model relies on)
+ - needs to validate the userName of each created new user (username should be a unique identifier) 
+ - needs a class method called loadUser that takes in a string of the username and returns a userObject
+
+other notes:
+ - the study session name will be a unique identifier, the construstor will throw an IllegalArgumentException if the name is invalid.
+ - there will be an ObservableList in the StudySession class that has all the locations in it as Strings, we can use that to list all the locations.
+ - - it can be referenced at "StudySessions.locations"
+ 
+
+
+Todo:
+StudySession Model - Ryan P
+User Model - Ian A
+login Controller - Ryan P
+createNewUserController - Ryan S
+marketPlaceController - Ryan S
+StudySessionController - Ryan P
+CreateNewSessionController - Ian A
