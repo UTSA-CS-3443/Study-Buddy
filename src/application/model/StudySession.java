@@ -69,7 +69,7 @@ public class StudySession {
 				
 				String records[] = s.next().trim().split(",");
 				
-				//Do i need a specific catch for this????
+				//TODO: Do i need a specific catch for this????
 				StudySession currRecord = new StudySession(records[0], User.loadUser(records[1]), records[2], Integer.parseInt(records[3]), records[4], records[5]); 
 				currRecord.setDescription(records[6]);
 				if (records.length > 6 ) {
