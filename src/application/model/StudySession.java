@@ -1,5 +1,10 @@
 package application.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
 import javafx.collections.ObservableList;
 
 public class StudySession {
@@ -16,13 +21,6 @@ public class StudySession {
 	private String locationDetail;
 	private String description;
 	private ObservableList<User> sessionMembers;
-	
-	public static ObservableList<StudySession> loadSessions() {
-		//Code to load sessions in from .csv file in records
-		// checks to see if .csv file is not there, creates it if it does not exist
-		
-		return null;
-	}
 
 	public void updateRecords() {
 		//updates CSV file by re-writing all the session in the all sessions list to the .csv file.
@@ -36,6 +34,8 @@ public class StudySession {
 			allSessions = loadSessions();
 		}
 		
+		loadLocations();  //Confirms that locations have been loaded
+		
 		this.name = name;
 		this.subject = subject;
 		this.classNumber = classNumber;
@@ -46,6 +46,43 @@ public class StudySession {
 		
 		allSessions.add(this);
 		updateRecords();
+	}
+	
+	public static ObservableList<StudySession> loadSessions() {
+		//Code to load sessions in from .csv file in records
+		// checks to see if .csv file is not there, creates it if it does not exist
+		try {
+		
+		File dataFile = new File(dataFilePath);
+		dataFile.createNewFile();  // Creates new file if and only if file does not exist
+		Scanner s = new Scanner(dataFile);
+		
+		while (s.hasNext()) {
+			//name,ownerUsername,subject,classNumber,location,locationDetail,description,sessionMember1,sessionMember2,sessionMember3, . . . ,sessionMember(n)
+			
+			String records[] = s.next().trim().split(",");
+			
+			StudySession currRecord = new StudySession(records[0], User.loadUser(records[1]), records[2], Integer.parseInt(records[3]), records[4], records[5]); 
+			
+		}
+		
+		
+		
+		}
+		catch (Exception e) {
+			 e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+	
+	public void sortSessionList() {
+		
+	}
+	
+	public void loadLocations() {
+		
 	}
 	
 	public void addSessionMember() {
