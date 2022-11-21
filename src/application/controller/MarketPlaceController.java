@@ -1,10 +1,13 @@
 package application.controller;
+import application.model.StudySession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.util.Callback;
 
 public class MarketPlaceController{
 
@@ -18,7 +21,7 @@ public class MarketPlaceController{
     private Button searchButton;
 
     @FXML
-    private ListView<?> studySessionsListView;
+    private ListView<StudySession> studySessionsListView;
 
     @FXML
     private Label userNameLabel;
@@ -30,7 +33,16 @@ public class MarketPlaceController{
     
     void initialize() {
     	//ObservableList<StudySession> sessions = StudySession.loadSessions();
-    	//
+    	//sort the sessions//if not already sorted.
+    	studySessionsListView.setItems(StudySession.allSessions);
+    	studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
+    	    @Override
+    	    public ListCell<StudySession> call(ListView<StudySession> studySessionListView) {
+    	        return new ListViewCellController();
+    	    }
+    	});
+    	
+    	//if the session is selected, then display a button
     }
 
 }
