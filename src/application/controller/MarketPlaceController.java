@@ -27,5 +27,10 @@ public class MarketPlaceController{
     void searchButtonClicked(ActionEvent event) {
 
     }
+    
+    void initialize() {
+    	//ObservableList<StudySession> sessions = StudySession.loadSessions();
+    	//
+    }
 
 }

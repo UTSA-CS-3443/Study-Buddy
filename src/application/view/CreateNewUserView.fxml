@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -26,36 +26,36 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.vgrow="SOMETIMES">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: #;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.vgrow="SOMETIMES">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="First Name:">
+            <Label prefHeight="17.0" prefWidth="103.0" text="First Name:" underline="true">
                <VBox.margin>
                   <Insets top="12.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="17.0" prefWidth="102.0" text="Last Name:">
+            <Label prefHeight="17.0" prefWidth="102.0" text="Last Name:" underline="true">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="14.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="17.0" prefWidth="102.0" text="User name:">
+            <Label prefHeight="17.0" prefWidth="102.0" text="User name:" underline="true">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="14.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="17.0" prefWidth="102.0" text="Password:">
+            <Label prefHeight="17.0" prefWidth="102.0" text="Password:" underline="true">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="17.0" prefWidth="102.0" text="Confirm Password:">
+            <Label prefHeight="17.0" prefWidth="102.0" text="Confirm Password:" underline="true">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonClicked" text="Back">
+            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonClicked" style="-fx-background-color: #353535; -fx-background-color: #353535;" text="Back" textFill="#ffe284">
                <VBox.margin>
-                  <Insets top="27.0" />
+                  <Insets top="29.0" />
                </VBox.margin>
             </Button>
          </children>
@@ -65,34 +65,34 @@
       </VBox>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.vgrow="SOMETIMES">
          <children>
-            <TextField fx:id="firstNameInputText">
+            <TextField fx:id="firstNameInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
                   <Insets top="7.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="lastNameInputText">
+            <TextField fx:id="lastNameInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
                   <Insets top="7.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="userNameInputText">
+            <TextField fx:id="userNameInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="passwordInputText">
+            <TextField fx:id="passwordInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="confirmPasswordInputText">
+            <TextField fx:id="confirmPasswordInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#createAccountButtonClicked" text="Create Account">
+            <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#createAccountButtonClicked" style="-fx-background-color: #353535;" text="Create Account" textFill="#ffe284">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="22.0" />
                </VBox.margin>
             </Button>
          </children>
