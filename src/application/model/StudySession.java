@@ -11,9 +11,11 @@ import javafx.collections.ObservableList;
 
 public class StudySession {
 	public static ObservableList<String> locations = FXCollections.observableArrayList();
+	public static ObservableList<String> subjects = FXCollections.observableArrayList();
 	public static ObservableList<StudySession> allSessions = FXCollections.observableArrayList();
 	private static final String sessionFilePath = "./data/SessionData.csv";
 	private static final String locationsFilePath = "./data/LocationData.csv";
+	private static final String subjectsFilePath = "./data/SubjectsData.csv";
 	
 	private String name;  //Serves as unique identifier
 	private User owner;
@@ -34,9 +36,16 @@ public class StudySession {
 			//allSessions = loadSessions();
 		}
 		
-		loadLocations();  //Confirms that locations have been loaded
 		
-		//Validates name of session, throw exception if invalid
+		if (locations.size() == 0) {  // Confirms that locations have been loaded
+			loadLocations(); 
+		}
+		
+		if (locations.size() == 0) {  // Confirms Subjects have been loaded
+			loadSubjects();
+		}
+		
+		// Validates name of session, throw exception if invalid
 		for (StudySession e : allSessions) {
 			if (e.getName().compareTo(name) == 0) {
 				throw new IllegalArgumentException("Name already in use");
@@ -56,7 +65,7 @@ public class StudySession {
 	}
 	
 	/**
-	 * 
+	 * Tested Working
 	 * @return
 	 */
 	public static ObservableList<StudySession> loadSessions() {
@@ -71,7 +80,6 @@ public class StudySession {
 		}
 		
 		try {
-		
 			File dataFile = new File(sessionFilePath);
 			dataFile.createNewFile();  // Creates new file if and only if file does not exist
 			Scanner s = new Scanner(dataFile);
@@ -164,6 +172,43 @@ public class StudySession {
 			e.printStackTrace();
 		}
 		
+	}
+	/**
+	 * Copied from loadSessions, functions the 
+	 * same filling in subjects list and using the subjects File Path
+	 */
+	public static void loadSubjects() {
+		int numLocations = 0;
+		
+		try {
+			File locationFile = new File(subjectsFilePath);
+			Scanner s = new Scanner(locationFile);
+			
+			while (s.hasNext()) {
+				numLocations++;
+				s.next();
+			}
+			
+			s.close();
+			
+			//Loads locations if locations file has been updated
+			if (subjects.size() != numLocations) {
+				while (subjects.size() != 0) {
+					subjects.remove(0);
+				}
+				
+				s = new Scanner(locationFile);
+				
+				while (s.hasNext()) {
+					String record = s.next().trim();
+					subjects.add(record);
+				}
+					
+				s.close();	
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void addSessionMember(User member) {
