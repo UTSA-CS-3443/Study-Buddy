@@ -28,7 +28,7 @@
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField prefHeight="39.0" prefWidth="183.0" promptText="Enter Session Name">
+                  <TextField fx:id="sessionNameField" prefHeight="39.0" prefWidth="183.0" promptText="Enter Session Name">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
@@ -44,7 +44,7 @@
                         <Insets left="25.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="171.0" text="Choose Subject">
+                  <MenuButton fx:id="subjectMenuButton" alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="171.0" text="Choose Subject">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Computer Science (CS)" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -56,7 +56,7 @@
                         <Font size="18.0" />
                      </font>
                   </MenuButton>
-                  <TextField prefHeight="0.0" prefWidth="149.0" promptText="Course Number">
+                  <TextField fx:id="courseNumberField" prefHeight="0.0" prefWidth="149.0" promptText="Course Number">
                      <HBox.margin>
                         <Insets left="5.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -76,7 +76,7 @@
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="222.0" text="Choose Location" textAlignment="CENTER">
+                  <MenuButton fx:id="locationMenuButton" alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="222.0" text="Choose Location" textAlignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Applied Engineering and Technology" />
                       <MenuItem mnemonicParsing="false" text="Arts Building" />
@@ -109,7 +109,7 @@
                         <Insets left="30.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextArea prefHeight="90.0" prefWidth="255.0" promptText="Location details to make it easy for StudyBuddies to find you!" wrapText="true">
+                  <TextArea fx:id="locationDetailField" prefHeight="90.0" prefWidth="255.0" promptText="Location details to make it easy for StudyBuddies to find you!" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -121,7 +121,7 @@
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" style="-fx-background-radius: 15px;" text="Cancel">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancelButtonPress" prefWidth="250.0" style="-fx-background-radius: 15px;" text="Cancel">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -129,7 +129,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" style="-fx-background-radius: 15px;" text="Create Session">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#createSessionButtonPress" prefWidth="250.0" style="-fx-background-radius: 15px;" text="Create Session">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -139,6 +139,11 @@
                   </Button>
                </children>
             </HBox>
+            <Label fx:id="errorField" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="800.0" text="Invalid Session Name" textAlignment="CENTER" textFill="#dd0000" visible="false">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </center>

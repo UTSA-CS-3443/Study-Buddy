@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.StudySession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
 public class StudySessionController {
+	public static StudySession currSession;
 
     @FXML
     private Button editSessionButton;
