@@ -1,6 +1,7 @@
 package application.model;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,12 +16,9 @@ public class User {
 	
 	public User(String userName, String password, String firstName, String lastName) throws IllegalArgumentException {
 		
-		if (allUsers.isEmpty()) {
-			loadUsers();
-		}
-		
 		for (User e: allUsers) {
 			if (e.getUsername().compareTo(userName) == 0) {
+				System.out.println(e.getUsername());
 				throw new IllegalArgumentException("Username already exists");
 			}
 		}
@@ -42,6 +40,10 @@ public class User {
 		System.out.println("Load Users was called");
 		
 		//empties the list
+		if (allUsers == null) {
+			allUsers = new ArrayList<>();
+		}
+		
 		while (allUsers.size() != 0) {
 			allUsers.remove(0);
 		}
@@ -64,10 +66,6 @@ public class User {
 	
 	public static User loadUser(String userName) {
 		
-		if (allUsers.isEmpty()) {
-			loadUsers();
-		}
-		
 		for (User e: allUsers) {
 			if (e.getUsername().compareTo(userName) == 0) {
 				return e;
@@ -75,6 +73,36 @@ public class User {
 		}
 		
 		return null;
+	}
+	
+	public static boolean validate(String userName, String password) {
+		for (User e: allUsers) {
+			if (e.getUsername().compareTo(userName) == 0) {
+				if (e.password.equals(password)) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+	public static void updateUsers() {
+		//updates CSV file by re-writing all the sessions in the allSessions list to the .csv file.
+		try {
+			File dataFile = new File(userFilePath);
+			FileWriter writer = new FileWriter(dataFile, false);
+			 
+			for (User e: allUsers) {
+				String record = String.format("%s,%s,%s,%s,", e.userName, e.password, e.firstName, e.lastName);
+				record = record + "\n";
+				writer.write(record);
+			}
+			writer.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

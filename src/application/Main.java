@@ -1,6 +1,7 @@
 package application;
 	
 import application.controller.LoginController;
+import application.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -19,6 +20,7 @@ public class Main extends Application {
 			loader.setLocation(Main.class.getResource("./view/loginView.fxml"));
 			LoginController controller = new LoginController();
 			loader.setController(controller);
+			User.loadUsers();
 			
 			BorderPane layout = (BorderPane) loader.load();
 			
