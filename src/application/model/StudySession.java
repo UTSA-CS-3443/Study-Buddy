@@ -196,7 +196,7 @@ public class StudySession {
 			
 			s.close();
 			
-			//Loads locations if locations file has been updated
+			//Loads subjects if subjects file has been updated
 			if (subjects.size() != numLocations) {
 				while (subjects.size() != 0) {
 					subjects.remove(0);

@@ -48,9 +48,10 @@ public class ListViewCellController extends ListCell<StudySession>{
         	sessionLocation.setText(s.getLocation());
         	sessionSubject.setText(s.getSubject());
         	numOfMembers.setText(Integer.toString(s.getSessionMembers().size()));	
+        	setText(null);
+            setGraphic(mainCellPane);
     	}
-    	setText(null);
-        setGraphic(mainCellPane);
+    
     }
 
 }
