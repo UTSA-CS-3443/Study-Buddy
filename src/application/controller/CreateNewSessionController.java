@@ -59,8 +59,7 @@ public class CreateNewSessionController {
 	    		Main.stage.setScene(scene);
 	    		Main.stage.setTitle(StudySessionController.currSession.getName());
 	    		Main.stage.show();
-	    	}
-	    	else {
+	    	} else {
 	    		FXMLLoader loader = new FXMLLoader();
 	    		loader.setLocation(Main.class.getResource("./view/MarketPlaceView.fxml"));
 	    		MarketPlaceController controller = new MarketPlaceController();
