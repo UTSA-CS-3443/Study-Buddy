@@ -27,7 +27,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: #;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.vgrow="SOMETIMES">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.vgrow="SOMETIMES">
          <children>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="First Name:" textFill="#ffe284" underline="true">
                <VBox.margin>
@@ -76,6 +76,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
             </Button>
          </children>
          <GridPane.margin>
@@ -86,27 +89,27 @@
          <children>
             <TextField fx:id="firstNameInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
-                  <Insets />
+                  <Insets top="5.0" />
                </VBox.margin>
             </TextField>
             <TextField fx:id="lastNameInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="17.0" />
                </VBox.margin>
             </TextField>
             <TextField fx:id="userNameInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="17.0" />
                </VBox.margin>
             </TextField>
             <TextField fx:id="passwordInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="18.0" />
                </VBox.margin>
             </TextField>
             <TextField fx:id="confirmPasswordInputText" style="-fx-border-color: #353535;">
                <VBox.margin>
-                  <Insets top="12.0" />
+                  <Insets top="19.0" />
                </VBox.margin>
             </TextField>
             <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#createAccountButtonClicked" style="-fx-background-color: #ffe284;" text="Create Account" textFill="#353535">

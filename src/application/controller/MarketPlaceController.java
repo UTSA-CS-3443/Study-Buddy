@@ -1,5 +1,6 @@
 package application.controller;
 import application.model.StudySession;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,17 +47,19 @@ public class MarketPlaceController{
 
     }
     
-    void initialize() {
+    public void initialize() {
+    	System.out.println("heY!");
+    	ObservableList<StudySession> sessions = StudySession.loadSessions();
     	
-    	//ObservableList<StudySession> sessions = StudySession.loadSessions();
     	//sort the sessions//if not already sorted.
-    	studySessionsListView.setItems(StudySession.allSessions);
-    	studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
+    	//studySessionsListView.setItems(sessions);
+    	//System.out.println(sessions.toString());
+    	/*studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
     	    @Override
     	    public ListCell<StudySession> call(ListView<StudySession> studySessionListView) {
     	        return new ListViewCellController();
     	    }
-    	});
+    	});*/
     }
 
 }
