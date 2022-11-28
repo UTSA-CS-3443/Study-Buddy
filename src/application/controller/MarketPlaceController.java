@@ -90,6 +90,7 @@ public class MarketPlaceController{
 
     }
     
+    
     public void initialize() {
     	ObservableList<StudySession> sessions = StudySession.loadSessions();
        	locationComboBox.setItems(StudySession.locations);
