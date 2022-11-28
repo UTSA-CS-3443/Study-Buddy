@@ -121,7 +121,7 @@ public class StudySession {
 			FileWriter writer = new FileWriter(dataFile, false);
 			 
 			for (StudySession e: allSessions) {
-				String record = String.format("%s,%s,%s,%s,%s,%s,%s,", e.name, e.owner.getUsername(), e.subject, e.classNumber, e.location, e.locationDetail, e.description);
+				String record = String.format("%s,%s,%s,%d,%s,%s,%s,", e.name, e.owner.getUsername(), e.subject, e.classNumber, e.location, e.locationDetail, e.description);
 				for (User u: e.sessionMembers) {
 					record = record + u.getUsername() + ",";
 				}
@@ -167,7 +167,7 @@ public class StudySession {
 				s = new Scanner(locationFile);
 				
 				while (s.hasNext()) {
-					String record = s.next().trim();
+					String record = s.nextLine().trim();
 					locations.add(record);
 				}
 					
@@ -176,7 +176,6 @@ public class StudySession {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	/**
 	 * Copied from loadSessions, functions the 
@@ -205,7 +204,7 @@ public class StudySession {
 				s = new Scanner(locationFile);
 				
 				while (s.hasNext()) {
-					String record = s.next().trim();
+					String record = s.nextLine().trim();
 					subjects.add(record);
 				}
 					

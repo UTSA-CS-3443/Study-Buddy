@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 public class StudySessionController {
 	public static StudySession currSession;
@@ -49,6 +50,7 @@ public class StudySessionController {
     @FXML
     void backButtonPressed(ActionEvent event) {
     	
+    	StudySession.updateRecords();
     	currSession = null;
     	
     	try {
@@ -58,7 +60,7 @@ public class StudySessionController {
 			MarketPlaceController controller = new MarketPlaceController();
 			loader.setController(controller);
 			
-			AnchorPane layout = (AnchorPane) loader.load();
+			BorderPane layout = (BorderPane) loader.load();
 			
 			Scene scene = new Scene(layout);
 			Main.stage.setScene(scene);
