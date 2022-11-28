@@ -40,7 +40,15 @@
                   <Insets top="-10.0" />
                </padding>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="User name:" textFill="#ffe284" underline="true">
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Last Name:" textFill="#ffe284" underline="true">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Username:" textFill="#ffe284" underline="true">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
@@ -49,14 +57,6 @@
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Password:" textFill="#ffe284" underline="true">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Last Name:" textFill="#ffe284" underline="true">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
