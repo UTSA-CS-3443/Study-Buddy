@@ -58,10 +58,10 @@ public class CreateNewUserController{
     @FXML
     void createAccountButtonClicked(ActionEvent event) {
     	if(passwordInputText.getText().equals(confirmPasswordInputText.getText())) {
-    		if(passwordInputText.getText()!="") {
-        		if(userNameInputText.getText()!="") {
-        			if(lastNameInputText.getText()!="") {
-        				if(firstNameInputText.getText()!="") {
+    		if(!(passwordInputText.getText().trim().isEmpty())) {
+        		if(!(userNameInputText.getText().trim().isEmpty())) {
+        			if(!(lastNameInputText.getText().trim().isEmpty())) {
+        				if(!(firstNameInputText.getText().trim().isEmpty())) {
         					//validate user name is not already in use 
         					//if its not in use 
         					 // create new user
@@ -70,7 +70,7 @@ public class CreateNewUserController{
         						User newUser = new User(userNameInputText.getText(),
         								passwordInputText.getText(), firstNameInputText.getText(),
         								lastNameInputText.getText());
-        						errorLabel.setTextFill(Color.web("#ffe284"));
+        						errorLabel.setTextFill(Color.web("#000000"));
         						errorLabel.setText("Account Created!");
         						User.updateUsers();
         			
@@ -102,5 +102,4 @@ public class CreateNewUserController{
     		errorLabel.setText("ERROR: password fields do not match!");
     	}
     }
-
 }
