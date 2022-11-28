@@ -75,23 +75,20 @@ public class MarketPlaceController{
     }
     
     public void initialize() {
-    	StudySession.loadSubjects();
-       	StudySession.loadLocations();
+    	ObservableList<StudySession> sessions = StudySession.loadSessions();
        	
        	locationComboBox.setItems(StudySession.locations);
        	subjectComboBox.setItems(StudySession.subjects);
        	
-    	ObservableList<StudySession> sessions = StudySession.loadSessions();
-    	
     	//sort the sessions//if not already sorted.
-    	//studySessionsListView.setItems(sessions);
+    	studySessionsListView.setItems(sessions);
     	//System.out.println(sessions.toString());
-    	/*studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
+    	studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
     	    @Override
     	    public ListCell<StudySession> call(ListView<StudySession> studySessionListView) {
     	        return new ListViewCellController();
     	    }
-    	});*/
+    	});
     }
 
 }
