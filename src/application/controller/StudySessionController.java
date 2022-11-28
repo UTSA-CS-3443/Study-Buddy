@@ -51,7 +51,7 @@ public class StudySessionController {
     void backButtonPressed(ActionEvent event) {
     	
     	StudySession.updateRecords();
-    	currSession = null;
+    	
     	
     	try {
     	
@@ -65,6 +65,7 @@ public class StudySessionController {
 			Scene scene = new Scene(layout);
 			Main.stage.setScene(scene);
 			Main.stage.setTitle(StudySessionController.currSession.getName());
+			currSession = null;
 			Main.stage.show();
     	}
     	catch (Exception e) {
@@ -81,7 +82,7 @@ public class StudySessionController {
 			CreateNewSessionController controller = new CreateNewSessionController();
 			loader.setController(controller);
 			
-			AnchorPane layout = (AnchorPane) loader.load();
+			BorderPane layout = (BorderPane) loader.load();
 			
 			Scene scene = new Scene(layout);
 			Main.stage.setScene(scene);
