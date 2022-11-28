@@ -52,6 +52,11 @@ public class StudySession {
 			}
 		}
 		
+		//Validates class number 0 <= classNumber <= 9999
+		if (classNumber > 9999 || classNumber <= 0 ) {
+			throw new IllegalArgumentException("Class Number invalid");
+		}
+		
 		this.name = name;
 		this.subject = subject;
 		this.classNumber = classNumber;

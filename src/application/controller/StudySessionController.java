@@ -1,12 +1,17 @@
 package application.controller;
 
+import application.Main;
 import application.model.StudySession;
+import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 
 public class StudySessionController {
 	public static StudySession currSession;
@@ -30,7 +35,7 @@ public class StudySessionController {
     private Label locationLabel;
 
     @FXML
-    private ListView<?> participantListView;
+    private ListView<User> participantListView;
 
     @FXML
     private TextArea descriptionTextArea;
@@ -43,22 +48,70 @@ public class StudySessionController {
 
     @FXML
     void backButtonPressed(ActionEvent event) {
-
-    }
+    	
+    	currSession = null;
+    	
+    	try {
+    	
+	    	FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("./view/MarketPlaceView.fxml"));
+			MarketPlaceController controller = new MarketPlaceController();
+			loader.setController(controller);
+			
+			AnchorPane layout = (AnchorPane) loader.load();
+			
+			Scene scene = new Scene(layout);
+			Main.stage.setScene(scene);
+			Main.stage.setTitle(StudySessionController.currSession.getName());
+			Main.stage.show();
+    	}
+    	catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    }	
 
     @FXML
     void editSessionButtonPressed(ActionEvent event) {
+    	try {
+        	
+	    	FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("./view/CreateSessionView.fxml"));
+			CreateNewSessionController controller = new CreateNewSessionController();
+			loader.setController(controller);
+			
+			AnchorPane layout = (AnchorPane) loader.load();
+			
+			Scene scene = new Scene(layout);
+			Main.stage.setScene(scene);
+			Main.stage.setTitle(StudySessionController.currSession.getName());
+			Main.stage.show();
+    	}
+    	catch (Exception e) {
+    		e.printStackTrace();
+    	}
 
     }
 
     @FXML
     void joinSessionButtonPress(ActionEvent event) {
+    	currSession.addSessionMember(LoginController.currUser);
 
     }
 
     @FXML
     void leaveSessionButtonPress(ActionEvent event) {
+    	currSession.getSessionMembers().remove(LoginController.currUser);
 
+    }
+    
+    public void initialize() {
+    	sessionNameLabel.setText(currSession.getName());
+    	ownerNameLabel.setText(currSession.getOwner().getName()); // need getters for user name
+    	subjectClassLabel.setText(currSession.getSubject() + currSession.getClassNumber());
+    	locationLabel.setText(currSession.getLocation());
+    	descriptionTextArea.setText(currSession.getLocationDetail() + "\n" + currSession.getDescription());
+    	
+    	participantListView.setItems(currSession.getSessionMembers());
     }
 
 }
