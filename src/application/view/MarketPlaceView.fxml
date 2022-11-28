@@ -85,10 +85,13 @@
                   <Insets bottom="50.0" />
                </VBox.margin>
             </ListView>
-            <Button fx:id="selectButton" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#selectButtonPressed" text="Select Study Session" visible="false">
+            <Button fx:id="selectButton" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#selectButtonPressed" style="-fx-background-color: #ffe284;" text="Select Study Session" visible="false">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
             </Button>
          </children>
          <BorderPane.margin>
