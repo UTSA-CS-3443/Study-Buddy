@@ -14,6 +14,47 @@ public class User {
 	private String firstName;
 	private String password;
 	
+	public static ArrayList<User> getAllUsers() {
+		return allUsers;
+	}
+
+	public static void setAllUsers(ArrayList<User> allUsers) {
+		User.allUsers = allUsers;
+	}
+	
+	public String getUsername() {
+		return userName;
+	}
+
+	public void setUsername(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public void setFirstName(String firstName) {
+			this.firstName = firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
 	public User(String userName, String password, String firstName, String lastName) throws IllegalArgumentException {
 		
 		for (User e: allUsers) {
@@ -28,13 +69,10 @@ public class User {
 		this.lastName = lastName;
 		
 		allUsers.add(this);
-		
 	}
 	
-	public String getUsername() {
-		return userName;
-	}
 	
+
 	public static void loadUsers() {
 		
 		System.out.println("Load Users was called");
@@ -74,6 +112,7 @@ public class User {
 		
 		return null;
 	}
+	
 	
 	public static boolean validate(String userName, String password) {
 		for (User e: allUsers) {

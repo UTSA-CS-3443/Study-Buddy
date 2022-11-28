@@ -24,6 +24,9 @@ public class LoginController {
 
     @FXML
     private Label invalidLabel;
+    
+    public static User currUser;
+    
 
     @FXML
     void createAccountButtonPress(ActionEvent event) {
@@ -47,6 +50,9 @@ public class LoginController {
     @FXML
     void loginButtonPress(ActionEvent event) {
     	if (User.validate(usernameField.getText(), passwordField.getText())) {
+    		
+    		currUser = User.loadUser(usernameField.getText());
+    		
     		try {
     	    	FXMLLoader loader = new FXMLLoader();
     	    	loader.setLocation(Main.class.getResource("./view/MarketPlaceView.fxml"));
@@ -68,6 +74,5 @@ public class LoginController {
 			invalidLabel.setText("Invalid username or password");
     	}
     }
-    
 
 }
