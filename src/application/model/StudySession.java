@@ -153,7 +153,7 @@ public class StudySession {
 			
 			while (s.hasNext()) {
 				numLocations++;
-				s.next();
+				s.nextLine();
 			}
 			
 			s.close();
@@ -191,7 +191,7 @@ public class StudySession {
 			
 			while (s.hasNext()) {
 				numLocations++;
-				s.next();
+				s.nextLine();
 			}
 			
 			s.close();
