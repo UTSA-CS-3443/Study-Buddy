@@ -14,10 +14,10 @@ import javafx.util.Callback;
 public class MarketPlaceController{
 
     @FXML
-    private ComboBox<?> subjectComboBox;
+    private ComboBox<String> subjectComboBox;
 
     @FXML
-    private ComboBox<?> locationComboBox;
+    private ComboBox<String> locationComboBox;
 
     @FXML
     private Button searchButton;
@@ -48,7 +48,12 @@ public class MarketPlaceController{
     }
     
     public void initialize() {
-    	System.out.println("heY!");
+    	StudySession.loadSubjects();
+       	StudySession.loadLocations();
+       	
+       	locationComboBox.setItems(StudySession.locations);
+       	subjectComboBox.setItems(StudySession.subjects);
+       	
     	ObservableList<StudySession> sessions = StudySession.loadSessions();
     	
     	//sort the sessions//if not already sorted.
