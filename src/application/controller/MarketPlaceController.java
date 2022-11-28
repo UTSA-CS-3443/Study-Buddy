@@ -13,8 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 
 public class MarketPlaceController{
@@ -67,6 +67,22 @@ public class MarketPlaceController{
     @FXML
     void selectButtonPressed(ActionEvent event) {
     	//go to studysessionview.
+    	StudySessionController.currSession=studySessionsListView.getSelectionModel().getSelectedItem();
+    	try {
+	    	FXMLLoader loader = new FXMLLoader();
+	    	loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
+	    	StudySessionController controller = new StudySessionController();
+	    	loader.setController(controller);
+	    	
+	    	AnchorPane layout = (AnchorPane) loader.load();
+	    	
+	    	Scene scene = new Scene(layout);
+	    	Main.stage.setScene(scene);
+	    	Main.stage.setTitle("Create a Session");
+	    	
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
     }
 
     @FXML
@@ -90,7 +106,6 @@ public class MarketPlaceController{
     	
     studySessionsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
     	public void handle(MouseEvent event) {
-            System.out.println("clicked on " + studySessionsListView.getSelectionModel().getSelectedItem().getName());
             selectButton.setVisible(true);
         }
     });
