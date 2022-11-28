@@ -124,7 +124,7 @@ public class MarketPlaceController {
 			// they are null
 		} else {
 		}
-		if (sessions.size() > 0) {
+		//if (sessions.size() > 0) {
 			studySessionsListView.setItems(sessions);
 			studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
 				@Override
@@ -132,7 +132,10 @@ public class MarketPlaceController {
 					return new ListViewCellController();
 				}
 			});
-		}
+		//}
+		locationComboBox.getSelectionModel().clearSelection();
+		subjectComboBox.getSelectionModel().clearSelection();
+		
 	}
 
 	public void initialize() {
@@ -152,7 +155,8 @@ public class MarketPlaceController {
 
 		studySessionsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent event) {
-				selectButton.setVisible(true);
+				if(studySessionsListView.getSelectionModel().getSelectedItem() != null)
+					selectButton.setVisible(true);
 			}
 		});
 	}
