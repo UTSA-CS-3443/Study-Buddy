@@ -81,30 +81,50 @@ public class CreateNewSessionController {
     void createSessionButtonPress(ActionEvent event) {
     	int courseNum = Integer.parseInt(courseNumberField.getText());
     	
-    	try { 
-    		StudySession newSession = new StudySession(sessionNameField.getText(), LoginController.currUser, courseComboBox.getValue(), 
-    				courseNum, locationComboBox.getValue(), locationDetailField.getText());
-    		StudySessionController.currSession = newSession;
-    		StudySession.updateRecords();
+    	if (StudySessionController.currSession != null) {
+    		//checking for differences, updating if different
+    		if (courseComboBox.getValue().compareTo(StudySessionController.currSession.getSubject()) != 0) {
+    			StudySessionController.currSession.setSubject(courseComboBox.getValue());
+    		}
     		
-    		FXMLLoader loader = new FXMLLoader();
-    		loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
-    		StudySessionController controller = new StudySessionController();
-    		loader.setController(controller);
+    		if (Integer.parseInt(courseNumberField.getText()) != StudySessionController.currSession.getClassNumber() ) {
+    			StudySessionController.currSession.setClassNumber(Integer.parseInt(courseNumberField.getText()));
+    		}
     		
-    		AnchorPane layout = (AnchorPane) loader.load();
+    		if (locationComboBox.getValue().compareTo(StudySessionController.currSession.getLocation()) != 0) {
+    			StudySessionController.currSession.setLocation(locationComboBox.getValue());
+    		}
     		
-    		Scene scene = new Scene(layout);
-    		Main.stage.setScene(scene);
-    		Main.stage.setTitle(StudySessionController.currSession.getName());
-    		Main.stage.show();
+    		if (locationDetailField.getText().compareTo(StudySessionController.currSession.getLocationDetail()) != 0) {
+    			StudySessionController.currSession.setLocationDetail(locationDetailField.getText());
+    		}
     	}
-    	catch(IllegalArgumentException e) {
-    		errorField.setText(e.getMessage());
-    		errorField.setVisible(true);
-    	}
-    	catch (IOException e) {
-    		e.printStackTrace();
+    	else {
+	    	try { 
+	    		StudySession newSession = new StudySession(sessionNameField.getText(), LoginController.currUser, courseComboBox.getValue(), 
+	    				courseNum, locationComboBox.getValue(), locationDetailField.getText());
+	    		StudySessionController.currSession = newSession;
+	    		StudySession.updateRecords();
+	    		
+	    		FXMLLoader loader = new FXMLLoader();
+	    		loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
+	    		StudySessionController controller = new StudySessionController();
+	    		loader.setController(controller);
+	    		
+	    		AnchorPane layout = (AnchorPane) loader.load();
+	    		
+	    		Scene scene = new Scene(layout);
+	    		Main.stage.setScene(scene);
+	    		Main.stage.setTitle(StudySessionController.currSession.getName());
+	    		Main.stage.show();
+	    	}
+	    	catch(IllegalArgumentException e) {
+	    		errorField.setText(e.getMessage());
+	    		errorField.setVisible(true);
+	    	}
+	    	catch (IOException e) {
+	    		e.printStackTrace();
+	    	}
     	}
     	
     }
@@ -116,16 +136,16 @@ public class CreateNewSessionController {
        	locationComboBox.setItems(StudySession.locations);
        	courseComboBox.setItems(StudySession.subjects);
     	
-       	/*
-       	//Keep the edit function??
     	//Setup for editing current session
     	if (StudySessionController.currSession != null) {
-    		//Load the current Session data
-    		
-    		
     		createSessionButton.setText("Update Session");
+    		sessionNameField.setText(StudySessionController.currSession.getName());
+    		sessionNameField.setEditable(false);
+    		courseComboBox.setValue(StudySessionController.currSession.getSubject());
+    		courseNumberField.setText(String.format("%d", StudySessionController.currSession.getClassNumber()));
+    		locationComboBox.setValue(StudySessionController.currSession.getLocation());
+    		locationDetailField.setText(StudySessionController.currSession.getLocationDetail());
     	}
-    	*/
     }
 }
 

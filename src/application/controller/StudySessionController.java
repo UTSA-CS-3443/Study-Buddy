@@ -72,8 +72,8 @@ public class StudySessionController {
 
     @FXML
     void editSessionButtonPressed(ActionEvent event) {
-    	try {
-        	
+      	try {
+	       	
 	    	FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("./view/CreateSessionView.fxml"));
 			CreateNewSessionController controller = new CreateNewSessionController();
@@ -85,12 +85,12 @@ public class StudySessionController {
 			Main.stage.setScene(scene);
 			Main.stage.setTitle(StudySessionController.currSession.getName());
 			Main.stage.show();
-    	}
-    	catch (Exception e) {
-    		e.printStackTrace();
-    	}
-
+	   	}
+	   	catch (Exception e) {
+	   		e.printStackTrace();
+	   	}
     }
+    
 
     @FXML
     void joinSessionButtonPress(ActionEvent event) {
@@ -112,6 +112,10 @@ public class StudySessionController {
     	descriptionTextArea.setText(currSession.getLocationDetail() + "\n" + currSession.getDescription());
     	
     	participantListView.setItems(currSession.getSessionMembers());
+    	
+    	if (currSession.getOwner().getUsername().compareTo(LoginController.currUser.getUsername()) != 0) {
+    		editSessionButton.setVisible(false);
+    	}
     }
 
 }
