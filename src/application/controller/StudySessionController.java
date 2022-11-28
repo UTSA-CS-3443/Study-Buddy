@@ -42,7 +42,7 @@ public class StudySessionController {
     private TextArea descriptionTextArea;
 
     @FXML
-    private Button editSessionButton1;
+    private Button joinSessionButton;
 
     @FXML
     private Button leaveSessionButton;
@@ -52,9 +52,7 @@ public class StudySessionController {
     	
     	StudySession.updateRecords();
     	
-    	
     	try {
-    	
 	    	FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("./view/MarketPlaceView.fxml"));
 			MarketPlaceController controller = new MarketPlaceController();
@@ -94,23 +92,41 @@ public class StudySessionController {
 	   	}
     }
     
-
     @FXML
     void joinSessionButtonPress(ActionEvent event) {
-    	currSession.addSessionMember(LoginController.currUser);
-
+    	//If current user is not already in the class
+    	boolean isInClass = false;
+    	for (User u: currSession.getSessionMembers()) {
+    		if (LoginController.currUser.getUsername().compareTo(u.getUsername()) == 0) {
+    			isInClass = true;
+    		}
+    	}
+    	
+    	if (!isInClass) {
+    		currSession.addSessionMember(LoginController.currUser);
+    	}
     }
 
     @FXML
     void leaveSessionButtonPress(ActionEvent event) {
-    	currSession.getSessionMembers().remove(LoginController.currUser);
+    	boolean isInClass = false;
+    	for (User u: currSession.getSessionMembers()) {
+    		if (LoginController.currUser.getUsername().compareTo(u.getUsername()) == 0) {
+    			isInClass = true;
+    		}
+    	}
+    	
+    	if (isInClass) {
+    		currSession.getSessionMembers().remove(LoginController.currUser);
+    	}
+    	
 
     }
     
     public void initialize() {
     	sessionNameLabel.setText(currSession.getName());
     	ownerNameLabel.setText(currSession.getOwner().getFirstName() + " " + currSession.getOwner().getLastName()); // need getters for user name
-    	subjectClassLabel.setText(currSession.getSubject() + currSession.getClassNumber());
+    	subjectClassLabel.setText(currSession.getSubject() + " " + currSession.getClassNumber());
     	locationLabel.setText(currSession.getLocation());
     	descriptionTextArea.setText(currSession.getLocationDetail() + "\n" + currSession.getDescription());
     	
@@ -118,6 +134,10 @@ public class StudySessionController {
     	
     	if (currSession.getOwner().getUsername().compareTo(LoginController.currUser.getUsername()) != 0) {
     		editSessionButton.setVisible(false);
+    	}
+    	else {
+    		joinSessionButton.setVisible(false);
+    		leaveSessionButton.setVisible(false);
     	}
     }
 
