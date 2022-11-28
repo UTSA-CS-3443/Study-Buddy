@@ -104,6 +104,7 @@ public class CreateNewSessionController {
 	    		StudySession newSession = new StudySession(sessionNameField.getText(), LoginController.currUser, courseComboBox.getValue(), 
 	    				courseNum, locationComboBox.getValue(), locationDetailField.getText());
 	    		StudySessionController.currSession = newSession;
+	    		StudySession.allSessions.add(newSession);
 	    		StudySession.updateRecords();
 	    		
 	    		FXMLLoader loader = new FXMLLoader();

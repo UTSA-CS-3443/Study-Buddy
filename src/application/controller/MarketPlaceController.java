@@ -80,8 +80,7 @@ public class MarketPlaceController{
        	subjectComboBox.setItems(StudySession.subjects);
        	
     	//sort the sessions//if not already sorted.
-    	studySessionsListView.setItems(sessions);
-    	System.out.println(sessions.size());
+       	studySessionsListView.setItems(sessions);
     	studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
     	    @Override
     	    public ListCell<StudySession> call(ListView<StudySession> studySessionListView) {

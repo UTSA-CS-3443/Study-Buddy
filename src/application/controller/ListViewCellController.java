@@ -44,7 +44,6 @@ public class ListViewCellController extends ListCell<StudySession>{
                     e.printStackTrace();
                 }	
     		}
-    		
         	sessionName.setText(s.getName());
         	sessionLocation.setText(s.getLocation());
         	sessionSubject.setText(s.getSubject());
