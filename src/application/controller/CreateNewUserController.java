@@ -70,7 +70,7 @@ public class CreateNewUserController{
         						User newUser = new User(userNameInputText.getText(),
         								passwordInputText.getText(), firstNameInputText.getText(),
         								lastNameInputText.getText());
-        						errorLabel.setTextFill(Color.web("#000000"));
+        						errorLabel.setTextFill(Color.web("#ffe284"));
         						errorLabel.setText("Account Created!");
         						User.updateUsers();
         			
