@@ -3,6 +3,7 @@ import application.Main;
 import application.model.StudySession;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -54,7 +55,6 @@ public class MarketPlaceController{
     	}
     }
     
-    @FXML 
     public void handleMouseClick(MouseEvent arg0) {
     	//if the session is selected, then display a button to go to studysessionview.
         System.out.println("clicked on " + studySessionsListView.getSelectionModel().getSelectedItem().getName());
@@ -76,19 +76,25 @@ public class MarketPlaceController{
     
     public void initialize() {
     	ObservableList<StudySession> sessions = StudySession.loadSessions();
-       	
        	locationComboBox.setItems(StudySession.locations);
        	subjectComboBox.setItems(StudySession.subjects);
        	
     	//sort the sessions//if not already sorted.
     	studySessionsListView.setItems(sessions);
-    	//System.out.println(sessions.toString());
+    	System.out.println(sessions.size());
     	studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
     	    @Override
     	    public ListCell<StudySession> call(ListView<StudySession> studySessionListView) {
     	        return new ListViewCellController();
     	    }
     	});
+    	
+    studySessionsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    	public void handle(MouseEvent event) {
+            System.out.println("clicked on " + studySessionsListView.getSelectionModel().getSelectedItem().getName());
+            selectButton.setVisible(true);
+        }
+    });
     }
 
 }

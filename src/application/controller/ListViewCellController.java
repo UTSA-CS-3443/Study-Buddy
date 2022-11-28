@@ -33,6 +33,7 @@ public class ListViewCellController extends ListCell<StudySession>{
     	super.updateItem(s,empty);
     	if(empty || s==null) {
     		setText(null);
+    		setGraphic(null);
     	} else {
     		if(loader == null) {
     			loader = new FXMLLoader(Main.class.getResource("view/ListViewCell.fxml"));
