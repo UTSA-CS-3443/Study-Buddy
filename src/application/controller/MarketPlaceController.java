@@ -1,6 +1,8 @@
 package application.controller;
+
 import application.Main;
 import application.model.StudySession;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,100 +19,142 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
-public class MarketPlaceController{
+public class MarketPlaceController {
 
-    @FXML
-    private Button createNewSessionButton;
-    @FXML
-    private ComboBox<String> subjectComboBox;
+	@FXML
+	private Button createNewSessionButton;
+	@FXML
+	private ComboBox<String> subjectComboBox;
 
-    @FXML
-    private ComboBox<String> locationComboBox;
+	@FXML
+	private ComboBox<String> locationComboBox;
 
-    @FXML
-    private Button searchButton;
+	@FXML
+	private Button searchButton;
 
-    @FXML
-    private ListView<StudySession> studySessionsListView;
+	@FXML
+	private ListView<StudySession> studySessionsListView;
 
-    @FXML
-    private Label userNameLabel;
-    
-    @FXML
-    void CreateNewSessionButtonClicked(ActionEvent event) {
-    	try {
-	    	FXMLLoader loader = new FXMLLoader();
-	    	loader.setLocation(Main.class.getResource("./view/CreateSessionView.fxml"));
-	    	CreateNewSessionController controller = new CreateNewSessionController();
-	    	loader.setController(controller);
-	    	
-	    	BorderPane layout = (BorderPane) loader.load();
-	    	
-	    	Scene scene = new Scene(layout);
-	    	Main.stage.setScene(scene);
-	    	Main.stage.setTitle("Create a Session");
-	    	
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    }
-    
-    public void handleMouseClick(MouseEvent arg0) {
-    	//if the session is selected, then display a button to go to studysessionview.
-        System.out.println("clicked on " + studySessionsListView.getSelectionModel().getSelectedItem().getName());
-        selectButton.setVisible(true);
-        
-    }
-    @FXML
-    private Button selectButton;
+	@FXML
+	private Label userNameLabel;
 
-    @FXML
-    void selectButtonPressed(ActionEvent event) {
-    	//go to studysessionview.
-    	StudySessionController.currSession=studySessionsListView.getSelectionModel().getSelectedItem();
-    	try {
-	    	FXMLLoader loader = new FXMLLoader();
-	    	loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
-	    	StudySessionController controller = new StudySessionController();
-	    	loader.setController(controller);
-	    	
-	    	AnchorPane layout = (AnchorPane) loader.load();
-	    	
-	    	Scene scene = new Scene(layout);
-	    	Main.stage.setScene(scene);
-	    	Main.stage.setTitle("Create a Session");
-	    	
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    }
+	@FXML
+	void CreateNewSessionButtonClicked(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("./view/CreateSessionView.fxml"));
+			CreateNewSessionController controller = new CreateNewSessionController();
+			loader.setController(controller);
 
-    @FXML
-    void searchButtonClicked(ActionEvent event) {
+			BorderPane layout = (BorderPane) loader.load();
 
-    }
-    
-    
-    public void initialize() {
-    	ObservableList<StudySession> sessions = StudySession.loadSessions();
-    	StudySession.loadSubjects();
-       	locationComboBox.setItems(StudySession.locations);
-       	subjectComboBox.setItems(StudySession.subjects);
-       	
-    	//sort the sessions//if not already sorted.
-       	studySessionsListView.setItems(sessions);
-    	studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
-    	    @Override
-    	    public ListCell<StudySession> call(ListView<StudySession> studySessionListView) {
-    	        return new ListViewCellController();
-    	    }
-    	});
-    	
-    studySessionsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-    	public void handle(MouseEvent event) {
-            selectButton.setVisible(true);
-        }
-    });
-    }
+			Scene scene = new Scene(layout);
+			Main.stage.setScene(scene);
+			Main.stage.setTitle("Create a Session");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void handleMouseClick(MouseEvent arg0) {
+		// if the session is selected, then display a button to go to studysessionview.
+		System.out.println("clicked on " + studySessionsListView.getSelectionModel().getSelectedItem().getName());
+		selectButton.setVisible(true);
+
+	}
+
+	@FXML
+	private Button selectButton;
+
+	@FXML
+	void selectButtonPressed(ActionEvent event) {
+		if (studySessionsListView.getSelectionModel().getSelectedItem() != null) {
+			// go to studysessionview.
+			StudySessionController.currSession = studySessionsListView.getSelectionModel().getSelectedItem();
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
+				StudySessionController controller = new StudySessionController();
+				loader.setController(controller);
+
+				AnchorPane layout = (AnchorPane) loader.load();
+
+				Scene scene = new Scene(layout);
+				Main.stage.setScene(scene);
+				Main.stage.setTitle("Create a Session");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@FXML
+	void searchButtonClicked(ActionEvent event) {
+		// search only by location
+		// search only by subject
+		// search by both
+
+		ObservableList<StudySession> sessions = FXCollections.observableArrayList();
+		if (subjectComboBox.getValue()!=null && locationComboBox.getValue()==null) {
+			for (StudySession s : StudySession.allSessions) {
+				if (s.getSubject().equals(subjectComboBox.getValue())) {
+					sessions.add(s);
+				}
+			}
+
+			// by location
+		} else if (subjectComboBox.getValue()==null
+				&& locationComboBox.getValue()!=null) {
+			for (StudySession s : StudySession.allSessions) {
+				if (s.getLocation().equals(subjectComboBox.getValue())) {
+					sessions.add(s);
+				}
+			}
+			// both
+		} else if (subjectComboBox.getValue()!=null
+				&& locationComboBox.getValue()!=null) {
+			for (StudySession s : StudySession.allSessions) {
+				if (s.getSubject().equals(subjectComboBox.getValue())
+						&& s.getLocation().equals(locationComboBox.getValue())) {
+					sessions.add(s);
+				}
+			}
+			// they are null
+		} else {
+		}
+		if (sessions.size() > 0) {
+			studySessionsListView.setItems(sessions);
+			studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
+				@Override
+				public ListCell<StudySession> call(ListView<StudySession> studySessionListView) {
+					return new ListViewCellController();
+				}
+			});
+		}
+	}
+
+	public void initialize() {
+		ObservableList<StudySession> sessions = StudySession.loadSessions();
+		StudySession.loadSubjects();
+		locationComboBox.setItems(StudySession.locations);
+		subjectComboBox.setItems(StudySession.subjects);
+
+		// sort the sessions//if not already sorted.
+		studySessionsListView.setItems(sessions);
+		studySessionsListView.setCellFactory(new Callback<ListView<StudySession>, ListCell<StudySession>>() {
+			@Override
+			public ListCell<StudySession> call(ListView<StudySession> studySessionListView) {
+				return new ListViewCellController();
+			}
+		});
+
+		studySessionsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent event) {
+				selectButton.setVisible(true);
+			}
+		});
+	}
 
 }
