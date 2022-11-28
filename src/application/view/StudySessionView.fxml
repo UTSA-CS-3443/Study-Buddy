@@ -26,17 +26,17 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="ownerNameLabel" layoutX="225.0" layoutY="130.0" prefHeight="20.0" prefWidth="175.0" text="Owner Name" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="130.0">
+      <Label fx:id="ownerNameLabel" layoutX="225.0" layoutY="130.0" prefHeight="20.0" prefWidth="175.0" text="Owner Name" textFill="#ffe284" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="130.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="subjectClassLabel" layoutX="225.0" layoutY="151.0" prefHeight="20.0" prefWidth="150.0" text="Subject/Class" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="151.0">
+      <Label fx:id="subjectClassLabel" layoutX="225.0" layoutY="151.0" prefHeight="20.0" prefWidth="150.0" text="Subject/Class" textFill="#ffe284" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="151.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="locationLabel" layoutX="400.0" layoutY="130.0" prefHeight="20.0" prefWidth="150.0" text="Location" AnchorPane.leftAnchor="425.0" AnchorPane.topAnchor="130.0">
+      <Label fx:id="locationLabel" layoutX="400.0" layoutY="130.0" prefHeight="20.0" prefWidth="150.0" text="Location" textFill="#ffe284" AnchorPane.leftAnchor="425.0" AnchorPane.topAnchor="130.0">
          <font>
             <Font size="15.0" />
          </font>
