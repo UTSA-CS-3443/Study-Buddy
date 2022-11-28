@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -10,11 +11,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #353535; -fx-border-style: green;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="editSessionButton" layoutX="734.0" layoutY="14.0" mnemonicParsing="false" onAction="#editSessionButtonPressed" prefWidth="100.0" style="-fx-background-color: #353535;" text="Edit Session" textFill="#ffe284" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonPressed" prefWidth="100.0" style="-fx-background-color: #353535;" text="Back" textFill="#ffe284" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <Label fx:id="sessionNameLabel" layoutX="225.0" layoutY="64.0" prefHeight="50.0" prefWidth="400.0" text="Study Session Name" textAlignment="CENTER" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="75.0">
+      <Button fx:id="editSessionButton" layoutX="734.0" layoutY="14.0" mnemonicParsing="false" onAction="#editSessionButtonPressed" prefWidth="99.0" style="-fx-background-color: #353535; -fx-background-radius: 5px;" text="Edit Session" textFill="#ffe284" underline="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonPressed" prefWidth="52.0" style="-fx-background-color: #353535; -fx-background-radius: 5px;" text="Back" textFill="#ffe284" underline="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label fx:id="sessionNameLabel" layoutX="245.0" layoutY="88.0" prefHeight="50.0" prefWidth="400.0" text="Study Session Name" textAlignment="CENTER" textFill="#ffe284" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="88.0">
          <font>
             <Font size="35.0" />
          </font>
@@ -35,18 +42,24 @@
          </font>
       </Label>
       <ListView fx:id="participantListView" layoutX="25.0" layoutY="183.0" prefHeight="330.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" />
-      <ImageView fitHeight="150.0" fitWidth="175.0" layoutX="25.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+      <ImageView fitHeight="194.0" fitWidth="200.0" layoutX="14.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="38.0">
          <image>
             <Image url="@../../../images/thumbnail.png" />
          </image></ImageView>
-      <Label alignment="CENTER" layoutX="111.0" layoutY="217.0" prefWidth="200.0" text="Participant List" textAlignment="CENTER" AnchorPane.bottomAnchor="365.0" AnchorPane.leftAnchor="25.0">
+      <Label alignment="CENTER" layoutX="25.0" layoutY="213.0" prefWidth="200.0" text="Participant List" textAlignment="CENTER" textFill="#ffe284" AnchorPane.bottomAnchor="355.0" AnchorPane.leftAnchor="25.0">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
       <Separator layoutX="230.0" layoutY="179.0" prefHeight="11.0" prefWidth="540.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="180.0" />
-      <TextArea fx:id="descriptionTextArea" layoutX="245.0" layoutY="203.0" prefHeight="377.0" prefWidth="534.0" />
-      <Button fx:id="editSessionButton1" layoutX="636.0" layoutY="75.0" mnemonicParsing="false" onAction="#joinSessionButtonPress" prefWidth="100.0" style="-fx-background-color: #353535;" text="Join Session" textFill="#ffe284" />
-      <Button fx:id="leaveSessionButton" layoutX="636.0" layoutY="113.0" mnemonicParsing="false" onAction="#leaveSessionButtonPress" prefWidth="100.0" style="-fx-background-color: #353535;" text="Leave Session" textFill="#ffe284" />
+      <TextArea fx:id="descriptionTextArea" editable="false" layoutX="245.0" layoutY="203.0" prefHeight="377.0" prefWidth="534.0" style="-fx-background-color: black;" />
+      <Button fx:id="editSessionButton1" layoutX="636.0" layoutY="75.0" mnemonicParsing="false" onAction="#joinSessionButtonPress" prefWidth="112.0" style="-fx-background-color: #ffe284; -fx-background-radius: 5px;" text="Join Session" textFill="#353535">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="leaveSessionButton" layoutX="636.0" layoutY="113.0" mnemonicParsing="false" onAction="#leaveSessionButtonPress" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: #ffe284; -fx-background-radius: 5px;" text="Leave Session" textFill="#353535">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

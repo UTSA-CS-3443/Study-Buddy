@@ -35,7 +35,7 @@ public class ListViewCellController extends ListCell<StudySession>{
     		setText(null);
     	} else {
     		if(loader == null) {
-    			loader = new FXMLLoader(Main.class.getResource("view/CreateSessionView.fxml"));
+    			loader = new FXMLLoader(Main.class.getResource("view/ListViewCell.fxml"));
                 loader.setController(this);
                 try {
                     loader.load();
