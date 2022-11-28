@@ -106,7 +106,7 @@ public class StudySessionController {
     
     public void initialize() {
     	sessionNameLabel.setText(currSession.getName());
-    	ownerNameLabel.setText(currSession.getOwner().getName()); // need getters for user name
+    	ownerNameLabel.setText(currSession.getOwner().getFirstName() + " " + currSession.getOwner().getLastName()); // need getters for user name
     	subjectClassLabel.setText(currSession.getSubject() + currSession.getClassNumber());
     	locationLabel.setText(currSession.getLocation());
     	descriptionTextArea.setText(currSession.getLocationDetail() + "\n" + currSession.getDescription());
