@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 public class CreateNewSessionController {
 
@@ -65,11 +66,11 @@ public class CreateNewSessionController {
 	    		MarketPlaceController controller = new MarketPlaceController();
 	    		loader.setController(controller);
 	    		
-	    		AnchorPane layout = (AnchorPane) loader.load();
+	    		BorderPane layout = (BorderPane) loader.load();
 	    		
 	    		Scene scene = new Scene(layout);
 	    		Main.stage.setScene(scene);
-	    		Main.stage.setTitle(StudySessionController.currSession.getName());
+	    		Main.stage.setTitle("MarketPlace");
 	    		Main.stage.show();
 	    	}  	
     	} catch (Exception e) {
@@ -98,27 +99,43 @@ public class CreateNewSessionController {
     		if (locationDetailField.getText().compareTo(StudySessionController.currSession.getLocationDetail()) != 0) {
     			StudySessionController.currSession.setLocationDetail(locationDetailField.getText());
     		}
+    		
+    		try {
+	    		FXMLLoader loader = new FXMLLoader();
+		    	loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
+		    	StudySessionController controller = new StudySessionController();
+		    	loader.setController(controller);
+		    	
+		    	AnchorPane layout = (AnchorPane) loader.load();
+		    	
+		    	Scene scene = new Scene(layout);
+		    	Main.stage.setScene(scene);
+		    	Main.stage.setTitle(StudySessionController.currSession.getName());
+		    	Main.stage.show();
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
     	}
     	else {
 	    	try { 
-	    		StudySession newSession = new StudySession(sessionNameField.getText(), LoginController.currUser, courseComboBox.getValue(), 
-	    				courseNum, locationComboBox.getValue(), locationDetailField.getText());
-	    		StudySessionController.currSession = newSession;
-	    		StudySession.allSessions.add(newSession);
-	    		StudySession.updateRecords();
-	    		
-	    		FXMLLoader loader = new FXMLLoader();
-	    		loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
-	    		StudySessionController controller = new StudySessionController();
-	    		loader.setController(controller);
-	    		
-	    		AnchorPane layout = (AnchorPane) loader.load();
-	    		
-	    		Scene scene = new Scene(layout);
-	    		Main.stage.setScene(scene);
-	    		Main.stage.setTitle(StudySessionController.currSession.getName());
-	    		Main.stage.show();
-	    	}
+		    	StudySession newSession = new StudySession(sessionNameField.getText(), LoginController.currUser, courseComboBox.getValue(), 
+		    			courseNum, locationComboBox.getValue(), locationDetailField.getText());
+		    	StudySessionController.currSession = newSession;
+		    	StudySession.allSessions.add(newSession);
+		    	StudySession.updateRecords();
+		    	
+		    	FXMLLoader loader = new FXMLLoader();
+		    	loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
+		    	StudySessionController controller = new StudySessionController();
+		    	loader.setController(controller);
+		    	
+		    	AnchorPane layout = (AnchorPane) loader.load();
+		    	
+		    	Scene scene = new Scene(layout);
+		    	Main.stage.setScene(scene);
+		    	Main.stage.setTitle(StudySessionController.currSession.getName());
+		    	Main.stage.show();
+		    }
 	    	catch(IllegalArgumentException e) {
 	    		errorField.setText(e.getMessage());
 	    		errorField.setVisible(true);
@@ -127,9 +144,7 @@ public class CreateNewSessionController {
 	    		e.printStackTrace();
 	    	}
     	}
-    	
     }
-    
     public void initialize() {
     	StudySession.loadSubjects();
        	StudySession.loadLocations();
