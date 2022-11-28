@@ -65,8 +65,6 @@ public class StudySession {
 		this.owner = creator;
 		this.description = "";
 		sessionMembers.add(creator);
-		
-		allSessions.add(this);
 	}
 	
 	/**
@@ -76,8 +74,6 @@ public class StudySession {
 	public static ObservableList<StudySession> loadSessions() {
 		//Code to load sessions in from .csv file in records
 		// checks to see if .csv file is not there, creates it if it does not exist
-		
-		System.out.println("Load Session was called");
 		
 		// empties the list
 		while (allSessions.size() != 0) {
