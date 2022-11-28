@@ -66,7 +66,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loginButtonPress" prefWidth="170.0" style="-fx-background-radius: 5px; -fx-background-color: #ffe284;" text="Login" textFill="#353535">
+                  <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#loginButtonPress" prefWidth="170.0" style="-fx-background-radius: 5px; -fx-background-color: #ffe284;" text="Login" textFill="#353535">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
