@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #353535; -fx-border-style: green;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #353535;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="editSessionButton" layoutX="734.0" layoutY="14.0" mnemonicParsing="false" onAction="#editSessionButtonPressed" prefWidth="99.0" style="-fx-background-color: #353535; -fx-background-radius: 5px;" text="Edit Session" textFill="#ffe284" underline="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
          <cursor>
@@ -52,7 +52,7 @@
          </font>
       </Label>
       <Separator layoutX="230.0" layoutY="179.0" prefHeight="11.0" prefWidth="540.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="180.0" />
-      <TextArea fx:id="descriptionTextArea" editable="false" layoutX="245.0" layoutY="203.0" prefHeight="377.0" prefWidth="534.0" style="-fx-background-color: black;" />
+      <TextArea fx:id="descriptionTextArea" editable="false" layoutX="245.0" layoutY="203.0" prefHeight="377.0" prefWidth="534.0" />
       <Button fx:id="editSessionButton1" layoutX="636.0" layoutY="75.0" mnemonicParsing="false" onAction="#joinSessionButtonPress" prefWidth="112.0" style="-fx-background-color: #ffe284; -fx-background-radius: 5px;" text="Join Session" textFill="#353535">
          <cursor>
             <Cursor fx:constant="HAND" />
