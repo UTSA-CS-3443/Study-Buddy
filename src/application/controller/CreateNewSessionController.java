@@ -118,7 +118,7 @@ public class CreateNewSessionController {
        	courseComboBox.setItems(StudySession.subjects);
     	
        	/*
-       	//Keep the dit function??
+       	//Keep the edit function??
     	//Setup for editing current session
     	if (StudySessionController.currSession != null) {
     		//Load the current Session data
