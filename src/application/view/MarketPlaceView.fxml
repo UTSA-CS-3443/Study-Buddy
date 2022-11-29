@@ -47,7 +47,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ComboBox>
-            <ComboBox fx:id="locationComboBox" prefWidth="150.0" promptText="Locaton">
+            <ComboBox fx:id="locationComboBox" prefWidth="150.0" promptText="Location">
                <VBox.margin>
                   <Insets left="7.0" top="10.0" />
                </VBox.margin>
