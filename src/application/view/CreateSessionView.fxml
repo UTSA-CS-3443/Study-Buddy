@@ -94,7 +94,7 @@
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancelButtonPress" prefHeight="51.0" prefWidth="180.0" style="-fx-background-radius: 5px; -fx-background-color: #ffe284;" text="Cancel" textFill="#353535">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancelButtonPress" prefHeight="51.0" prefWidth="250.0" style="-fx-background-radius: 5px; -fx-background-color: #ffe284;" text="Cancel" textFill="#353535">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -105,7 +105,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="createSessionButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#createSessionButtonPress" prefHeight="51.0" prefWidth="180.0" style="-fx-background-radius: 5px; -fx-background-color: #ffe284;" text="Create Session" textFill="#353535">
+                  <Button fx:id="createSessionButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#createSessionButtonPress" prefHeight="51.0" prefWidth="250.0" style="-fx-background-radius: 5px; -fx-background-color: #ffe284;" text="Create Session" textFill="#353535">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
