@@ -96,7 +96,7 @@
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancelButtonPress" prefHeight="51.0" prefWidth="250.0" style="-fx-background-radius: 5px; -fx-background-color: #ffe284;" text="Cancel" textFill="#353535">
                      <font>
-                        <Font size="22.0" />
+                        <Font name="System Bold" size="22.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -130,12 +130,30 @@
       </VBox>
    </center>
    <top>
-      <ImageView fitHeight="223.0" fitWidth="381.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../../../images/loginLogo.png" />
-         </image>
+      <HBox alignment="CENTER" prefHeight="223.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="20.0" top="20.0" />
-         </BorderPane.margin></ImageView>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <Button disable="true" mnemonicParsing="false" prefWidth="150.0" text="Button" visible="false">
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin>
+            </Button>
+            <ImageView fitHeight="195.0" fitWidth="463.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/loginLogo.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="deleteSessionButton" mnemonicParsing="false" onAction="#deleteSessionButton" prefWidth="150.0" style="-fx-background-color: #353535;" text="Delete Session" textFill="#ffe284" underline="true" visible="false">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </top>
 </BorderPane>

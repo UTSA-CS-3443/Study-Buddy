@@ -38,6 +38,9 @@ public class CreateNewSessionController {
 
     @FXML
     private Label errorField;
+    
+    @FXML
+    private Button deleteSessionButton;
 
     /**
      * TODO: untested
@@ -145,6 +148,36 @@ public class CreateNewSessionController {
 	    	}
     	}
     }
+    
+    @FXML
+    void deleteSessionButton(ActionEvent event) {
+    	for (StudySession e: StudySession.allSessions) {
+    		if (e.getName().compareTo(StudySessionController.currSession.getName()) == 0) {
+    			StudySession.allSessions.remove(e);
+    			break;
+    		}
+    	}
+    	
+	    StudySessionController.currSession = null;
+	    StudySession.updateRecords();
+	    	
+	    try { 
+	    	FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("./view/MarketPlaceView.fxml"));
+			MarketPlaceController controller = new MarketPlaceController();
+			loader.setController(controller);
+			
+			BorderPane layout = (BorderPane) loader.load();
+			
+			Scene scene = new Scene(layout);
+			Main.stage.setScene(scene);
+			Main.stage.setTitle("MarketPlace");
+			Main.stage.show();
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
     public void initialize() {
     	StudySession.loadSubjects();
        	StudySession.loadLocations();
@@ -161,6 +194,7 @@ public class CreateNewSessionController {
     		courseNumberField.setText(String.format("%d", StudySessionController.currSession.getClassNumber()));
     		locationComboBox.setValue(StudySessionController.currSession.getLocation());
     		locationDetailField.setText(StudySessionController.currSession.getLocationDetail());
+    		deleteSessionButton.setVisible(true);
     	}
     }
 }
