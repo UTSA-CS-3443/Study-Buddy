@@ -123,6 +123,9 @@ public class MarketPlaceController {
 			}
 			// they are null
 		} else {
+			for (StudySession s : StudySession.allSessions) {
+				sessions.add(s);
+			}
 		}
 		//if (sessions.size() > 0) {
 			studySessionsListView.setItems(sessions);
