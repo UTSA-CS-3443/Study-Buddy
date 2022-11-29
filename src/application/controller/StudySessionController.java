@@ -46,10 +46,15 @@ public class StudySessionController {
 
     @FXML
     private Button leaveSessionButton;
+    
+    @FXML
+    private Label locationDetailLabel;
 
     @FXML
     void backButtonPressed(ActionEvent event) {
     	
+    	currSession.setDescription(descriptionTextArea.getText());
+    	//TODO: Add code to update record in all Sessions data
     	StudySession.updateRecords();
     	
     	try {
@@ -73,6 +78,11 @@ public class StudySessionController {
 
     @FXML
     void editSessionButtonPressed(ActionEvent event) {
+    	
+    	currSession.setDescription(descriptionTextArea.getText());
+    	//TODO: Add code to update record in all Sessions data
+    	StudySession.updateRecords();
+    	
       	try {
 	       	
 	    	FXMLLoader loader = new FXMLLoader();
@@ -119,8 +129,6 @@ public class StudySessionController {
     	if (isInClass) {
     		currSession.getSessionMembers().remove(LoginController.currUser);
     	}
-    	
-
     }
     
     public void initialize() {
@@ -128,7 +136,8 @@ public class StudySessionController {
     	ownerNameLabel.setText(currSession.getOwner().getFirstName() + " " + currSession.getOwner().getLastName()); // need getters for user name
     	subjectClassLabel.setText(currSession.getSubject() + " " + currSession.getClassNumber());
     	locationLabel.setText(currSession.getLocation());
-    	descriptionTextArea.setText(currSession.getLocationDetail() + "\n" + currSession.getDescription());
+    	locationDetailLabel.setText(currSession.getLocationDetail());
+    	descriptionTextArea.setText(currSession.getDescription());
     	
     	participantListView.setItems(currSession.getSessionMembers());
     	

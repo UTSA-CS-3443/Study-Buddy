@@ -31,7 +31,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="subjectClassLabel" layoutX="225.0" layoutY="151.0" prefHeight="20.0" prefWidth="150.0" text="Subject/Class" textFill="#ffe284" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="151.0">
+      <Label fx:id="subjectClassLabel" layoutX="225.0" layoutY="151.0" prefHeight="21.0" prefWidth="375.0" text="Subject/Class" textFill="#ffe284" wrapText="true" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="151.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -52,7 +52,7 @@
          </font>
       </Label>
       <Separator layoutX="230.0" layoutY="179.0" prefHeight="11.0" prefWidth="540.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="180.0" />
-      <TextArea fx:id="descriptionTextArea" editable="false" layoutX="245.0" layoutY="203.0" prefHeight="377.0" prefWidth="534.0" />
+      <TextArea fx:id="descriptionTextArea" layoutX="245.0" layoutY="203.0" prefHeight="345.0" prefWidth="534.0" promptText="Enter Description here!" AnchorPane.bottomAnchor="25.0" />
       <Button fx:id="joinSessionButton" layoutX="636.0" layoutY="75.0" mnemonicParsing="false" onAction="#joinSessionButtonPress" prefWidth="112.0" style="-fx-background-color: #ffe284; -fx-background-radius: 5px;" text="Join Session" textFill="#353535">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -61,5 +61,10 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <Label fx:id="locationDetailLabel" layoutX="420.0" layoutY="153.0" prefHeight="21.0" prefWidth="526.0" text="LocationDetailLabel" textFill="#ffe284" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="200.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
