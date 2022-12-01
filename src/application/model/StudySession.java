@@ -1,3 +1,9 @@
+/**
+ * Object class for Study Session
+ * 
+ * @author 
+ * 
+ */
 package application.model;
 
 import java.io.File;
@@ -27,7 +33,16 @@ public class StudySession {
 	private ObservableList<User> sessionMembers = FXCollections.observableArrayList();
 
 	
-	
+	/**
+	 * Constructor for the StudySession object.
+	 * @param name String, serves a unique identifier for StudySession
+	 * @param creator User, the creator user account 
+	 * @param subject String identifying the subject
+	 * @param classNumber int, 4 digit number (is validated to 0 <= n <= 9999)
+	 * @param location String, building where study session is located
+	 * @param locationDetail String, details on where exactly the class is located in the building
+	 * @throws IllegalArgumentException thrown when a input is deemed invalid.
+	 */
 	public StudySession(String name, User creator, String subject, int classNumber,
 			String location, String locationDetail) throws IllegalArgumentException {
 		
@@ -174,8 +189,7 @@ public class StudySession {
 		}
 	}
 	/**
-	 * Copied from loadSessions, functions the 
-	 * same filling in subjects list and using the subjects File Path
+	 * Very similar to loadLocations, functions the same filling in subjects list and using the subjects File Path
 	 */
 	public static void loadSubjects() {
 		int numLocations = 0;
@@ -211,72 +225,138 @@ public class StudySession {
 		}
 	}
 	
+	/**
+	 * adds a session member to the members list
+	 * @param member User, user to be added to the session
+	 */
 	public void addSessionMember(User member) {
 		sessionMembers.add(member);
 		updateRecords();
 	}
 	
-	//Setters and Getters
+	/**
+	 * gets name value
+	 * @return String
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * sets name value
+	 * @param name String
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * gets Owner object
+	 * @return User
+	 */
 	public User getOwner() {
 		return owner;
 	}
 
+	/**
+	 * sets ownerObject
+	 * @param owner
+	 */
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
 
+	/**
+	 * gets Subject String 
+	 * @return String
+	 */
 	public String getSubject() {
 		return subject;
 	}
 
+	/**
+	 * sets Subject String
+	 * @param subject
+	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 
+	/**
+	 * gets class number integer value
+	 * @return int
+	 */
 	public int getClassNumber() {
 		return classNumber;
 	}
 
+	/**
+	 * sets the class number value 
+	 * @param classNumber int 
+	 */
 	public void setClassNumber(int classNumber) {
 		this.classNumber = classNumber;
 	}
 
+	/**
+	 * gets Location string
+	 * @return String
+	 */
 	public String getLocation() {
 		return location;
 	}
 
+	/**
+	 * sets location String
+	 * @param location String
+	 */
 	public void setLocation(String location) {
 		this.location = location;
 	}
 
+	/**
+	 * gets Location Detail String
+	 * @return String
+	 */
 	public String getLocationDetail() {
 		return locationDetail;
 	}
 
+	/**
+	 * sets location Detail String
+	 * @param locationDetail String
+	 */
 	public void setLocationDetail(String locationDetail) {
 		this.locationDetail = locationDetail;
 	}
 
+	/**
+	 * gets Description string
+	 * @return String
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Sets description String
+	 * @param description String
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * gets session Members list
+	 * @return ObservableList<User> 
+	 */
 	public ObservableList<User> getSessionMembers() {
 		return sessionMembers;
 	}
 	
+	/**
+	 * prints the record in .csv format
+	 */
 	public String toString() {
 		String record = String.format("%s,%s,%s,%s,%s,%s,%s,", name, owner.getUsername(), subject, classNumber, location, locationDetail, description);
 		for (User u: sessionMembers) {
