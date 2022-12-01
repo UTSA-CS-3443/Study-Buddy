@@ -99,19 +99,19 @@ public class CreateNewSessionController {
 	    	try {
 	    		//checking for differences, updating if different
 	    		if (courseComboBox.getValue().compareTo(StudySessionController.currSession.getSubject()) != 0) {
-	    			StudySessionController.currSession.setSubject(courseComboBox.getValue());
+	    			StudySessionController.currSession.setSubject(courseComboBox.getValue().trim());
 	    		}
 	    		
 	    		if (Integer.parseInt(courseNumberField.getText()) != StudySessionController.currSession.getClassNumber() ) {
-	    			StudySessionController.currSession.setClassNumber(Integer.parseInt(courseNumberField.getText()));
+	    			StudySessionController.currSession.setClassNumber(Integer.parseInt(courseNumberField.getText().trim()));
 	    		}
 	    		
 	    		if (locationComboBox.getValue().compareTo(StudySessionController.currSession.getLocation()) != 0) {
-	    			StudySessionController.currSession.setLocation(locationComboBox.getValue());
+	    			StudySessionController.currSession.setLocation(locationComboBox.getValue().trim());
 	    		}
 	    		
 	    		if (locationDetailField.getText().compareTo(StudySessionController.currSession.getLocationDetail()) != 0) {
-	    			StudySessionController.currSession.setLocationDetail(locationDetailField.getText());
+	    			StudySessionController.currSession.setLocationDetail(locationDetailField.getText().trim());
 	    		}
     		
 	    		//Loads the updated session in SessionView
@@ -136,8 +136,8 @@ public class CreateNewSessionController {
     	}
     	else { //if there is no active Session
 	    	try { 
-		    	StudySession newSession = new StudySession(sessionNameField.getText(), LoginController.currUser, courseComboBox.getValue(), 
-		    			courseNum, locationComboBox.getValue(), locationDetailField.getText());
+		    	StudySession newSession = new StudySession(sessionNameField.getText().trim(), LoginController.currUser, courseComboBox.getValue().trim(), 
+		    			courseNum, locationComboBox.getValue().trim(), locationDetailField.getText().trim());
 		    	StudySessionController.currSession = newSession;
 		    	StudySession.allSessions.add(newSession);
 		    	StudySession.updateRecords();

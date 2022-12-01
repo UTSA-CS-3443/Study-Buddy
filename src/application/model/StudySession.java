@@ -105,7 +105,7 @@ public class StudySession {
 				
 				//TODO: Do i need a specific catch for this????
 				StudySession currRecord = new StudySession(records[0], User.loadUser(records[1]), records[2], Integer.parseInt(records[3]), records[4], records[5]); 
-				currRecord.setDescription(records[6]);
+				currRecord.setDescription(records[6].replace('\u0c08', '\n'));  //adds new line characters back in
 				if (records.length > 6 ) {
 					for (int i = 7; i > (records.length - 1); i++) {
 						currRecord.addSessionMember(User.loadUser(records[i]));
@@ -132,7 +132,11 @@ public class StudySession {
 			FileWriter writer = new FileWriter(dataFile, false);
 			 
 			for (StudySession e: allSessions) {
-				String record = String.format("%s,%s,%s,%d,%s,%s,%s,", e.name, e.owner.getUsername(), e.subject, e.classNumber, e.location, e.locationDetail, e.description);
+				
+				//swap newline characters for some other character before saving description: using 0c08 hex code
+				String csvFriendlyDescription = e.description.replace('\n', '\u0c08');
+				
+				String record = String.format("%s,%s,%s,%d,%s,%s,%s,", e.name, e.owner.getUsername(), e.subject, e.classNumber, e.location, e.locationDetail, csvFriendlyDescription);
 				for (User u: e.sessionMembers) {
 					record = record + u.getUsername() + ",";
 				}
