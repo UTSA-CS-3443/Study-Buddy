@@ -247,27 +247,11 @@ public class StudySession {
 	}
 
 	/**
-	 * sets name value
-	 * @param name String
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
 	 * gets Owner object
 	 * @return User
 	 */
 	public User getOwner() {
 		return owner;
-	}
-
-	/**
-	 * sets ownerObject
-	 * @param owner
-	 */
-	public void setOwner(User owner) {
-		this.owner = owner;
 	}
 
 	/**
