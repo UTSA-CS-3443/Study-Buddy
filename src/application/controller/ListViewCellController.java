@@ -9,6 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.GridPane;
 
+/**
+ * @author Ryan S, Ryan P, Ian A
+ *
+ */
 public class ListViewCellController extends ListCell<StudySession>{
 
     @FXML
@@ -27,6 +31,10 @@ public class ListViewCellController extends ListCell<StudySession>{
     private Label sessionSubject;
     
     private FXMLLoader loader;
+    /**
+     * takes in session and boolean regarding the nature of the current cells
+     * if its not null it creates each cell based on the cell view
+     */
     @Override
 	protected
     void updateItem(StudySession s,boolean empty) {
