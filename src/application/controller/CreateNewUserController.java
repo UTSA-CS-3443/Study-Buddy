@@ -38,6 +38,9 @@ public class CreateNewUserController{
     @FXML
     private Label errorLabel;
 
+    /**
+     * @param event - takes the user back to the login screen
+     */
     @FXML
     void backButtonClicked(ActionEvent event) {
     	try {
@@ -55,6 +58,10 @@ public class CreateNewUserController{
 		}
     }
 
+    /**
+     * @param event
+     * Takes click event and checks if all fields are valide - then creates the account.
+     */
     @FXML
     void createAccountButtonClicked(ActionEvent event) {
     	if(passwordInputText.getText().equals(confirmPasswordInputText.getText())) {

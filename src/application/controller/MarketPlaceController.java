@@ -19,6 +19,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
+/**
+ * @author Ryan S, Ryan P, Ian Amaya
+ *
+ */
 public class MarketPlaceController {
 
 	@FXML
@@ -38,6 +42,10 @@ public class MarketPlaceController {
 	@FXML
 	private Label userNameLabel;
 
+	/**
+	 * @param event
+	 * loads the create new session view
+	 */
 	@FXML
 	void CreateNewSessionButtonClicked(ActionEvent event) {
 		try {
@@ -57,6 +65,9 @@ public class MarketPlaceController {
 		}
 	}
 
+	/**
+	 * @param arg0 follows click for session element.
+	 */
 	public void handleMouseClick(MouseEvent arg0) {
 		// if the session is selected, then display a button to go to studysessionview.
 		System.out.println("clicked on " + studySessionsListView.getSelectionModel().getSelectedItem().getName());
@@ -67,6 +78,9 @@ public class MarketPlaceController {
 	@FXML
 	private Button selectButton;
 
+	/**
+	 * @param gets selected session and loads the view for that session.
+	 */
 	@FXML
 	void selectButtonPressed(ActionEvent event) {
 		if (studySessionsListView.getSelectionModel().getSelectedItem() != null) {
@@ -90,6 +104,11 @@ public class MarketPlaceController {
 		}
 	}
 
+	/**
+	 * @param event - search button clicked
+	 * makes sure the filters are not null
+	 * if not, it then actively searches session list for certain criteria
+	 */
 	@FXML
 	void searchButtonClicked(ActionEvent event) {
 		// search only by location
@@ -141,6 +160,10 @@ public class MarketPlaceController {
 		
 	}
 
+	/**
+	 * loads sessions and creates each individual fxml element for the list view.
+	 * also creates a listener to tell if an element is clicked.
+	 */
 	public void initialize() {
 		ObservableList<StudySession> sessions = StudySession.loadSessions();
 		StudySession.loadSubjects();
