@@ -294,8 +294,12 @@ public class StudySession {
 	 * sets the class number value 
 	 * @param classNumber int 
 	 */
-	public void setClassNumber(int classNumber) {
-		this.classNumber = classNumber;
+	public void setClassNumber(int classNumber) throws IllegalArgumentException {
+		if (classNumber > 9999 || classNumber <= 0 ) {
+			throw new IllegalArgumentException("Class Number invalid");
+		} else {
+			this.classNumber = classNumber;
+		}
 	}
 
 	/**

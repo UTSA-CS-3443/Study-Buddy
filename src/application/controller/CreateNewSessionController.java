@@ -95,26 +95,27 @@ public class CreateNewSessionController {
     void createSessionButtonPress(ActionEvent event) {
     	int courseNum = Integer.parseInt(courseNumberField.getText());
     	
-    	if (StudySessionController.currSession != null) { //If there is an active Session
-    		//checking for differences, updating if different
-    		if (courseComboBox.getValue().compareTo(StudySessionController.currSession.getSubject()) != 0) {
-    			StudySessionController.currSession.setSubject(courseComboBox.getValue());
-    		}
+	    if (StudySessionController.currSession != null) { //If there is an active Session
+	    	try {
+	    		//checking for differences, updating if different
+	    		if (courseComboBox.getValue().compareTo(StudySessionController.currSession.getSubject()) != 0) {
+	    			StudySessionController.currSession.setSubject(courseComboBox.getValue());
+	    		}
+	    		
+	    		if (Integer.parseInt(courseNumberField.getText()) != StudySessionController.currSession.getClassNumber() ) {
+	    			StudySessionController.currSession.setClassNumber(Integer.parseInt(courseNumberField.getText()));
+	    		}
+	    		
+	    		if (locationComboBox.getValue().compareTo(StudySessionController.currSession.getLocation()) != 0) {
+	    			StudySessionController.currSession.setLocation(locationComboBox.getValue());
+	    		}
+	    		
+	    		if (locationDetailField.getText().compareTo(StudySessionController.currSession.getLocationDetail()) != 0) {
+	    			StudySessionController.currSession.setLocationDetail(locationDetailField.getText());
+	    		}
     		
-    		if (Integer.parseInt(courseNumberField.getText()) != StudySessionController.currSession.getClassNumber() ) {
-    			StudySessionController.currSession.setClassNumber(Integer.parseInt(courseNumberField.getText()));
-    		}
+	    		//Loads the updated session in SessionView
     		
-    		if (locationComboBox.getValue().compareTo(StudySessionController.currSession.getLocation()) != 0) {
-    			StudySessionController.currSession.setLocation(locationComboBox.getValue());
-    		}
-    		
-    		if (locationDetailField.getText().compareTo(StudySessionController.currSession.getLocationDetail()) != 0) {
-    			StudySessionController.currSession.setLocationDetail(locationDetailField.getText());
-    		}
-    		
-    		//Loads the updated session in SessionView
-    		try {
 	    		FXMLLoader loader = new FXMLLoader();
 		    	loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
 		    	StudySessionController controller = new StudySessionController();
@@ -126,8 +127,11 @@ public class CreateNewSessionController {
 		    	Main.stage.setScene(scene);
 		    	Main.stage.setTitle(StudySessionController.currSession.getName());
 		    	Main.stage.show();
-    		} catch (Exception e) {
-    			e.printStackTrace();
+    		} catch(IllegalArgumentException e) { // this is thrown by the StudySession Constructor when invalid input is given
+	    		errorField.setText(e.getMessage());
+	    		errorField.setVisible(true);
+	    	} catch (Exception e) {
+    			e.getMessage();
     		}
     	}
     	else { //if there is no active Session
