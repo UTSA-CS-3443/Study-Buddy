@@ -1,7 +1,7 @@
 /**
  * Object class for Study Session
  * 
- * @author 
+ * @author Team 5
  * 
  */
 package application.model;
