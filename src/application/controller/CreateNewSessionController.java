@@ -1,3 +1,8 @@
+/**
+ * Controls the createNewSession FXML view
+ * 
+ * @author Team 5
+ */
 package application.controller;
 
 import java.io.IOException;
@@ -43,15 +48,15 @@ public class CreateNewSessionController {
     private Button deleteSessionButton;
 
     /**
-     * TODO: untested
-     * @param event
+     * Controls the actions taken when the cancel button is pressed. 
+     * Loads the studySessionView if no active session, otherwise loads MarketPlaceView
+     * @param event ActionEvent, loaded by FXML
      */
     @FXML
     void cancelButtonPress(ActionEvent event) {
-    	//load the new marketplace or load current session if current session is not loaded
     	try { 
     	
-	    	if (StudySessionController.currSession != null) {
+	    	if (StudySessionController.currSession != null) { //Loads the study session view if there is an active session
 	    		FXMLLoader loader = new FXMLLoader();
 	    		loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
 	    		StudySessionController controller = new StudySessionController();
@@ -63,7 +68,7 @@ public class CreateNewSessionController {
 	    		Main.stage.setScene(scene);
 	    		Main.stage.setTitle(StudySessionController.currSession.getName());
 	    		Main.stage.show();
-	    	} else {
+	    	} else {    // Loads marketplace view if no active session
 	    		FXMLLoader loader = new FXMLLoader();
 	    		loader.setLocation(Main.class.getResource("./view/MarketPlaceView.fxml"));
 	    		MarketPlaceController controller = new MarketPlaceController();
@@ -81,11 +86,16 @@ public class CreateNewSessionController {
     	}
     }
 
+    /**
+     * Controls functions when the create new Session or the Update session button is pressed.
+     * If a Active Session is set, the function will update the record, if not a new session is created. 
+     * @param event ActionEvent, loaded by FXML
+     */
     @FXML
     void createSessionButtonPress(ActionEvent event) {
     	int courseNum = Integer.parseInt(courseNumberField.getText());
     	
-    	if (StudySessionController.currSession != null) {
+    	if (StudySessionController.currSession != null) { //If there is an active Session
     		//checking for differences, updating if different
     		if (courseComboBox.getValue().compareTo(StudySessionController.currSession.getSubject()) != 0) {
     			StudySessionController.currSession.setSubject(courseComboBox.getValue());
@@ -103,6 +113,7 @@ public class CreateNewSessionController {
     			StudySessionController.currSession.setLocationDetail(locationDetailField.getText());
     		}
     		
+    		//Loads the updated session in SessionView
     		try {
 	    		FXMLLoader loader = new FXMLLoader();
 		    	loader.setLocation(Main.class.getResource("./view/StudySessionView.fxml"));
@@ -119,7 +130,7 @@ public class CreateNewSessionController {
     			e.printStackTrace();
     		}
     	}
-    	else {
+    	else { //if there is no active Session
 	    	try { 
 		    	StudySession newSession = new StudySession(sessionNameField.getText(), LoginController.currUser, courseComboBox.getValue(), 
 		    			courseNum, locationComboBox.getValue(), locationDetailField.getText());
@@ -139,16 +150,22 @@ public class CreateNewSessionController {
 		    	Main.stage.setTitle(StudySessionController.currSession.getName());
 		    	Main.stage.show();
 		    }
-	    	catch(IllegalArgumentException e) {
+	    	catch(IllegalArgumentException e) { // this is thrown by the StudySession Constructor when invalid input is given
 	    		errorField.setText(e.getMessage());
 	    		errorField.setVisible(true);
 	    	}
 	    	catch (IOException e) {
-	    		e.printStackTrace();
+	    		e.getStackTrace();
 	    	}
     	}
     }
     
+    /**
+     * Controls events when hitting the delete button 
+     * removes the session from the all Sessions master list, removes from the active session slot, 
+     * updates CSV records to reflect change, loads marketplace.
+     * @param event
+     */
     @FXML
     void deleteSessionButton(ActionEvent event) {
     	for (StudySession e: StudySession.allSessions) {
@@ -178,6 +195,9 @@ public class CreateNewSessionController {
     	}
     }
     
+    /**
+     * Sets up the menu in either edit mode (if there is an active session) or loads menu for creating new session.
+     */
     public void initialize() {
     	StudySession.loadSubjects();
        	StudySession.loadLocations();
