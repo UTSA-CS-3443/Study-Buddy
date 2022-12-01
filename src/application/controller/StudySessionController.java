@@ -1,3 +1,7 @@
+/**
+ * Controls the Study Session View
+ * @author Team 5
+ */
 package application.controller;
 
 import application.Main;
@@ -50,6 +54,10 @@ public class StudySessionController {
     @FXML
     private Label locationDetailLabel;
 
+    /**
+     * loads the previous view, saving the data from the description box
+     * @param event ActionEvent, loaded by FXML
+     */
     @FXML
     void backButtonPressed(ActionEvent event) {
     	
@@ -76,6 +84,10 @@ public class StudySessionController {
     	}
     }	
 
+    /**
+     * loads the edit Session view, saving the current description data. 
+     * @param event ActionEvent, loaded by FXML
+     */
     @FXML
     void editSessionButtonPressed(ActionEvent event) {
     	
@@ -102,6 +114,10 @@ public class StudySessionController {
 	   	}
     }
     
+    /**
+     * adds user to session Member list, validates and prevent user from joining multiple times
+     * @param event ActionEvent, loaded by FXML
+     */
     @FXML
     void joinSessionButtonPress(ActionEvent event) {
     	//If current user is not already in the class
@@ -117,6 +133,10 @@ public class StudySessionController {
     	}
     }
 
+    /**
+     * removes user from sessionMembers list, validates that user is in the class.
+     * @param event ActionEvent, loaded by FXML
+     */
     @FXML
     void leaveSessionButtonPress(ActionEvent event) {
     	boolean isInClass = false;
@@ -131,6 +151,9 @@ public class StudySessionController {
     	}
     }
     
+    /**
+     * loads in all the various data, setting labels and filling in user list, also sets the various button visibility based on user's access. 
+     */
     public void initialize() {
     	sessionNameLabel.setText(currSession.getName());
     	ownerNameLabel.setText(currSession.getOwner().getFirstName() + " " + currSession.getOwner().getLastName()); // need getters for user name
@@ -141,10 +164,11 @@ public class StudySessionController {
     	
     	participantListView.setItems(currSession.getSessionMembers());
     	
+    	//is not owner disable edit button
     	if (currSession.getOwner().getUsername().compareTo(LoginController.currUser.getUsername()) != 0) {
     		editSessionButton.setVisible(false);
     	}
-    	else {
+    	else { // if owner, disable join and leave buttons
     		joinSessionButton.setVisible(false);
     		leaveSessionButton.setVisible(false);
     	}
