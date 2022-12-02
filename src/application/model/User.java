@@ -75,8 +75,6 @@ public class User {
 
 	public static void loadUsers() {
 		
-		System.out.println("Load Users was called");
-		
 		//empties the list
 		if (allUsers == null) {
 			allUsers = new ArrayList<>();
