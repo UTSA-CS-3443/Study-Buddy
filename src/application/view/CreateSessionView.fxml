@@ -28,7 +28,7 @@
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="sessionNameField" prefHeight="39.0" prefWidth="183.0" promptText="Enter Session Name">
+                  <TextField fx:id="sessionNameField" prefHeight="39.0" prefWidth="184.0" promptText="Enter Session Name">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
@@ -44,9 +44,9 @@
                         <Insets left="25.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="courseComboBox" prefHeight="40.0" prefWidth="150.0" promptText="subjectComboBox">
+                  <ComboBox fx:id="courseComboBox" prefHeight="40.0" prefWidth="157.0" promptText="Choose Subject">
                      <HBox.margin>
-                        <Insets left="5.0" right="10.0" top="10.0" />
+                        <Insets right="10.0" top="10.0" />
                      </HBox.margin>
                   </ComboBox>
                   <TextField fx:id="courseNumberField" prefHeight="0.0" prefWidth="149.0" promptText="Course Number">
@@ -69,7 +69,7 @@
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="locationComboBox" prefHeight="40.0" prefWidth="200.0" promptText="Choose a Location">
+                  <ComboBox fx:id="locationComboBox" prefHeight="40.0" prefWidth="200.0" promptText="Choose Location">
                      <HBox.margin>
                         <Insets left="5.0" right="10.0" top="10.0" />
                      </HBox.margin>
