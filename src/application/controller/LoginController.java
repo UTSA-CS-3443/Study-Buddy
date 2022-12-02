@@ -1,3 +1,8 @@
+/**
+ * Controls the login FXML view
+ * 
+ * @author Team 5
+ */
 package application.controller;
 
 import application.Main;
@@ -27,6 +32,11 @@ public class LoginController {
     
     public static User currUser;
     
+    /**
+     * Controls the actions taken when the create account button is pressed.
+     * Loads the createNewUser view
+     * @param event ActionEvent, loaded by FXML
+     */
 
     @FXML
     void createAccountButtonPress(ActionEvent event) {
@@ -47,6 +57,12 @@ public class LoginController {
     	}
     }
 
+    /**
+     * Controls the actions taken when the login button is pressed.
+     * If the user's username and password are validated, it will load the MarketPlaceView
+     * If the user's username and password are incorrect, only a label will appear on the loginView
+     * @param event ActionEvent, loaded by FXML
+     */
     @FXML
     void loginButtonPress(ActionEvent event) {
     	if (User.validate(usernameField.getText(), passwordField.getText())) {
